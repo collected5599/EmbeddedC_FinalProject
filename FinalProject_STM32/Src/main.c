@@ -21,6 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "app_config.h"
+#include "io_diagnostics.h"
 
 /* USER CODE END Includes */
 
@@ -106,6 +108,9 @@ int main(void)
   MX_QUADSPI_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+#if IO_DIAGNOSTICS_MODE
+  IoDiagnostics_Init();
+#endif
 
   /* USER CODE END 2 */
 
@@ -116,6 +121,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+#if IO_DIAGNOSTICS_MODE
+    IoDiagnostics_Task();
+#else
+    /* Call the integrated coffee-maker application task here when ready. */
+#endif
+
     /* Keep IWDG active while the superloop is making progress. */
     if (HAL_IWDG_Refresh(&hiwdg) != HAL_OK)
     {
