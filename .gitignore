@@ -1,0 +1,21 @@
+# STM32CubeIDE build output
+**/Debug/
+**/Release/
+**/build/
+**/Build/
+
+# Compiled firmware and intermediate files
+*.o
+*.d
+*.elf
+*.hex
+*.bin
+*.map
+*.list
+*.su
+
+# Editor and operating-system noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
