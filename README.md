@@ -1,74 +1,74 @@
-# STM32 IoT Coffee Maker — Project Brief
+# STM32 IoT Coffee Maker
 
-## Hardware
-- Board: B-L475E-IOT01A1 (STM32L475VG)
-- IDE: STM32CubeIDE 2.2.0
-- Configuration: STM32CubeMX
-- Firmware: C, STM32 HAL, bare-metal superloop
-- Development OS: Windows
+An embedded coffee-maker controller built around the **B-L475E-IOT01A1**
+development board (STM32L475VGTX). The STM32 firmware reads physical controls
+and sensors, runs the coffee-cycle state machine, drives status LEDs, and
+reports telemetry to a Python desktop dashboard.
 
-## Project objective
-Build an IoT coffee-maker controller using a physical STM32 board and a PC-based Python digital twin.
+The heater and pump are **simulation-only outputs**. The project does not
+control mains voltage or a physical heater or pump.
 
-The STM32 executes all control logic. Python simulates the coffee machine's water tank, heater, brewing process, and user interface.
+## System overview
 
-## Inputs
-- Onboard user button B2 (`BUTTON_EXTI13`, PC13): power toggle (active-low)
-- External pushbutton: start/cancel (PD14, active-low)
-- Three-terminal, two-position strength selector: normal/strong coffee (PA3, active-low; SPDT common to PA3, one throw to GND, other throw open)
-- Potentiometer: simulated water temperature (PC5, ADC1_IN14, mapped 20 °C – 110 °C)
-- VL53L0X: cup detection (onboard I2C2, PB10/PB11, XSHUT on PC6)
-- Additional onboard sensors: evaluate for useful functionality
+- **Inputs:** PC13 power button, PD14 start/cancel button, PA3 strength
+  selector, PC5 potentiometer for simulated water temperature, and the onboard
+  VL53L0X time-of-flight sensor for cup detection.
+- **Controller:** STM32 firmware with a HAL-free state machine and a
+  superloop application that collects inputs, checks safety conditions,
+  updates indicators, logs events, and sends status.
+- **Outputs:** External ready, heating, and fault LEDs; onboard heartbeat LED;
+  virtual heater and pump requests.
+- **PC link:** USART1 at 115200 baud, 8N1, through the ST-LINK virtual COM
+  port.
+- **Persistent records:** Onboard QSPI flash stores CRC-protected event
+  records and cup-detection calibration profiles.
+- **Digital twin:** A read-only Tkinter dashboard displays live status,
+  animated virtual brewing, board LED levels, and downloadable QSPI event
+  records as CSV.
 
-## Outputs
-- External LEDs: ready (PB4), heating/brewing (PB1), fault (PA4)
-- Onboard LEDs: heartbeat / status (LED2, PB14)
-- UART communication with PC (USART1, PB6/PB7 @ 115200 8N1 via ST-LINK VCP)
+The normal coffee-cycle states are **STANDBY**, **IDLE**, **HEATING**,
+**BREWING**, **COMPLETE**, and **FAULT**. Safety checks include cup presence,
+temperature limits, sensor errors, and a heating timeout. Thresholds and
+recovery rules are documented in the fault-matrix diagram.
 
-## Planned peripherals
-- GPIO
-- ADC (ADC1_IN14 on PC5)
-- I2C (I2C2 on PB10/PB11)
-- SPI / QSPI (Onboard Macronix MX25R6435F 8 MB Quad-SPI NOR Flash fulfills the SPI-family peripheral requirement)
-- UART (USART1 on PB6/PB7)
+## Run the digital twin
 
-All pin assignments must be verified against the board schematic and CubeMX configuration before implementation.
+From the repository root, create and activate the project-local Conda
+environment, then launch the dashboard:
 
-## Firmware architecture
-- Button manager (PC13, PD14, PA3 with strength latching)
-- LED manager (PB4, PB1, PA4, PB14)
-- Coffee state machine
-- Temperature sensor (EMA filter, 20 °C – 110 °C)
-- Cup sensor (VL53L0X driver via I2C2)
-- QSPI flash driver & storage manager (ping-pong config & 32-byte circular event logging)
-- UART protocol (binary framing with CRC16, telemetry, commands, log streaming)
-- Fault manager (safety interlocks, unified fault matrix)
+```powershell
+conda env create --prefix .\DigitalTwin\.conda-env --file .\DigitalTwin\environment.yml
+conda activate .\DigitalTwin\.conda-env
+python .\DigitalTwin\coffee_twin.py
+```
 
-## State machine
-STANDBY ↔ IDLE → HEATING → BREWING → COMPLETE → IDLE
+Connect the board to the PC, select its ST-LINK virtual COM port, and click
+**Connect**. The dashboard expects the coffee application to be running and
+receiving USART1 `STATUS` telemetry. It can request QSPI event records and save
+them as CSV. It does not send coffee-control commands to the board.
 
-FAULT can be entered from any operating state.
+## Firmware and operating modes
 
-## Safety
-- No mains voltage or real heater/pump control.
-- Simulate actuators in Python.
-- Fail-safe timeout: Python twin cuts virtual heater/pump if telemetry lost for > 500 ms.
-- Keep STM32 GPIO at 3.3 V logic.
-- Use nonblocking timing with HAL_GetTick().
-- Avoid blocking delays in the control loop.
+Open `FinalProject_STM32/FinalProject_STM32.ioc` in STM32CubeIDE and build the
+`FinalProject_STM32` project. Compile-time options are in
+`FinalProject_STM32/Inc/app_config.h`:
 
-## Development rules
-- Never modify the .ioc file without explicit approval.
-- Never modify generated initialization code without explicit approval.
-- Preserve STM32CubeIDE compatibility.
-- Use separate modules where practical.
-- Build and test after each implementation stage.
-- Document assumptions and unresolved hardware questions.
+- `IO_DIAGNOSTICS_MODE=1` selects the GPIO/ADC/I2C/QSPI bring-up diagnostics.
+- `IO_TOF_CALIBRATION_MODE=1` selects the guided cup-sensor calibration.
+- With both set to `0`, the integrated coffee application runs.
 
-## Hardware Verification & Decision Log
-- **D1 (Temperature Source)**: Physical potentiometer on PC5 is the primary sensor for Milestone 1. Software injection via Python twin is supported with a 1000 ms staleness timeout.
-- **D2 (Over-Temp Reachability)**: ADC mapped to 20 °C – 110 °C so that the 102 °C fault threshold can be verified at ~91% potentiometer rotation.
-- **D4 (SPI Requirement)**: Fulfilled by the onboard 64-Mbit Macronix MX25R6435F Quad-SPI NOR Flash on PE10–PE15.
-- **D6 (Safety & Watchdog)**: Python twin watchdog enforces 500 ms fail-safe cutoff. STM32 IWDG configured for 1000 ms timeout refreshed in superloop.
-- **Additional Onboard Sensors**: HTS221, LPS22HB, LSM6DSL, and LIS3MDL all share the I2C2 bus. Evaluated for machine tilt and vibration monitoring; deferred to Milestone 2 to maintain lean superloop timing.
-- **Pushbutton Silkscreen Verification**: Verified against board schematic: B2 (Blue) is `BUTTON_EXTI13` on PC13. B1 (Black) is NRST hardware reset.
+Only one mode should be enabled at a time. See
+[`DigitalTwin/README.md`](DigitalTwin/README.md) for dashboard details and
+[`PROJECT_HANDOFF.md`](PROJECT_HANDOFF.md) for configuration, wiring, and
+bring-up notes.
+
+## Validation status
+
+The diagnostic GPIO bring-up has been confirmed on the physical board. The
+firmware build has succeeded. Coffee-mode ranging, state behavior, QSPI
+calibration persistence and log retrieval, and live dashboard operation still
+require hardware verification. The QSPI log-reading command is read-only;
+hardware behavior is not yet claimed as verified.
+
+For diagrams, slide previews, and the project presentation guide, see
+[`Documentation/PROJECT_PROGRESS_AND_PRESENTATION_GUIDE.md`](Documentation/PROJECT_PROGRESS_AND_PRESENTATION_GUIDE.md).
