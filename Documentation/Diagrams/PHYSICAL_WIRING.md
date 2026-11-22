@@ -8,11 +8,7 @@ This document provides the physical point-to-point connection diagram and compon
 
 **Illustrative and not to scale.** Route all board connections by the PCB silkscreen labels (`3V3`, `GND`, `A0`, `D2`, `D4`, `D5`, `D6`, `D7`). Do not determine pin 1 by counting positions in this drawing. The visual CN3 right-to-left orientation is shown for reference only.
 
-The project switch is the three-lug, two-position toggle shown below. Its center lug is drawn as COM, but confirm COM and the two throws with a continuity meter before connecting it.
-
-For the shown electrical assignment, the grounded throw selects **Strong** and the open throw selects **Normal** through PA3's internal pull-up. PD14 also uses its internal pull-up. The lever's physical direction depends on how the switch is mounted.
-
-![Three-terminal strength selector switch](../Project_Progress/Screenshots/05_Strength_Selector_Switch.jpg)
+Use a three-lug, two-position SPDT toggle for the strength selector. Identify COM and the two throws with a continuity meter before connecting it. Wire COM to PA3; the grounded throw selects **Strong**, and the open throw selects **Normal** through PA3's internal pull-up. PD14 also uses its internal pull-up. The lever's physical direction depends on how the switch is mounted.
 
 ---
 

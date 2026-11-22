@@ -104,11 +104,7 @@ These screenshots are kept locally with the project so they can be reused in the
 
    ![ADC1 sampling time](Project_Progress/Screenshots/04_ADC1_Sampling_Time.png)
 
-5. Three-terminal strength selector supplied for the breadboard
-
-   ![Strength selector switch](Project_Progress/Screenshots/05_Strength_Selector_Switch.jpg)
-
-6. Updated physical wiring diagram with the SPDT selector
+5. Updated physical wiring diagram with the SPDT selector
 
    ![Updated physical wiring diagram](Project_Progress/Screenshots/06_Updated_Physical_Wiring_Diagram.png)
 
