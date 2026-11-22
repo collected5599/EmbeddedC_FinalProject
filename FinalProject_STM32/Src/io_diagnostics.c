@@ -1,6 +1,7 @@
 #include "io_diagnostics.h"
 
 #include "main.h"
+#include "qspi_flash.h"
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -8,6 +9,7 @@
 
 extern ADC_HandleTypeDef hadc1;
 extern I2C_HandleTypeDef hi2c2;
+extern QSPI_HandleTypeDef hqspi;
 extern UART_HandleTypeDef huart1;
 
 enum {
@@ -23,6 +25,9 @@ enum {
 #define DIAG_LED_STEP_MS      500u
 #define DIAG_TOF_PERIOD_MS    1000u
 #define DIAG_TOF_ADDRESS      (0x29u << 1)
+
+static QspiFlashStatus_t qspi_status = QSPI_FLASH_ERROR;
+static uint32_t qspi_jedec_id;
 
 static uint32_t led_tick;
 static uint32_t report_tick;
@@ -111,7 +116,7 @@ static void send_report(void)
 
     if (read_pot_adc(&adc_value)) {
         length = snprintf(line, sizeof(line),
-                          "DIAG D2=%s D4=%s PC13=%s PC5_ADC=%lu/4095 TOF=%s LED=%s\r\n",
+                          "DIAG D2=%s D4=%s PC13=%s PC5_ADC=%lu/4095 TOF=%s QSPI=%06lX LED=%s\r\n",
                           pin_level(D2_BTN_START_CANCEL_GPIO_Port,
                                     D2_BTN_START_CANCEL_Pin),
                           pin_level(D4_SW_STRENGTH_GPIO_Port,
@@ -119,16 +124,18 @@ static void send_report(void)
                           pin_level(BTN_POWER_GPIO_Port, BTN_POWER_Pin),
                           (unsigned long)adc_value,
                           tof_status_text(),
+                          (unsigned long)((qspi_status == QSPI_FLASH_OK) ? qspi_jedec_id : 0u),
                           active_led_text());
     } else {
         length = snprintf(line, sizeof(line),
-                          "DIAG D2=%s D4=%s PC13=%s PC5_ADC=ERR TOF=%s LED=%s\r\n",
+                          "DIAG D2=%s D4=%s PC13=%s PC5_ADC=ERR TOF=%s QSPI=%06lX LED=%s\r\n",
                           pin_level(D2_BTN_START_CANCEL_GPIO_Port,
                                     D2_BTN_START_CANCEL_Pin),
                           pin_level(D4_SW_STRENGTH_GPIO_Port,
                                     D4_SW_STRENGTH_Pin),
                           pin_level(BTN_POWER_GPIO_Port, BTN_POWER_Pin),
                           tof_status_text(),
+                          (unsigned long)((qspi_status == QSPI_FLASH_OK) ? qspi_jedec_id : 0u),
                           active_led_text());
     }
 
@@ -144,6 +151,7 @@ void IoDiagnostics_Init(void)
         HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
 
     adc_calibrated = (calibration_status == HAL_OK);
+    qspi_status = QspiFlash_Init(&hqspi, &qspi_jedec_id);
     led_step = DIAG_LED_READY;
     led_active = DIAG_LED_ALL_OFF;
     led_tick = HAL_GetTick();

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .title { font-size: 38px; font-weight: 700; }
+      .subtitle { font-size: 23px; fill: #536078; }
+      .heading { font-size: 27px; font-weight: 700; }
+      .body { font-size: 23px; }
+      .detail { font-size: 20px; fill: #46536a; }
+      .panel { stroke-width: 3; rx: 22; }
+      .input { fill: #eaf3ff; stroke: #3973b9; }
+      .controller { fill: #edf8ef; stroke: #3d8b56; }
+      .output { fill: #eaf3ff; stroke: #3973b9; }
+      .host { fill: #fff4e5; stroke: #c98222; }
+      .block { fill: #fff; stroke: #72819a; stroke-width: 2.5; rx: 14; }
+      .arrow { fill: none; stroke: #43536b; stroke-width: 4; marker-end: url(#arrow); }
+      .both { fill: none; stroke: #43536b; stroke-width: 4; marker-start: url(#arrow-start); marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#43536b"/></marker>
+    <marker id="arrow-start" markerWidth="12" markerHeight="12" refX="2" refY="6" orient="auto"><path d="M12 0 L0 6 L12 12 Z" fill="#43536b"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="#f7f9fc"/>
+  <text x="800" y="65" text-anchor="middle" class="title">IoT Coffee Maker — System Block Diagram</text>
+  <text x="800" y="105" text-anchor="middle" class="subtitle">Planned architecture • firmware implementation in progress</text>
+
+  <!-- Inputs -->
+  <rect x="55" y="185" width="375" height="540" class="panel input"/>
+  <text x="242" y="235" text-anchor="middle" class="heading">Inputs &amp; Sensors</text>
+  <text x="95" y="305" class="body">Temperature control</text>
+  <text x="95" y="338" class="detail">Potentiometer • PC5 / ADC1</text>
+  <text x="95" y="405" class="body">Brew controls</text>
+  <text x="95" y="438" class="detail">Start/cancel • PD14</text>
+  <text x="95" y="470" class="detail">Strength selector • PA3</text>
+  <text x="95" y="537" class="body">Onboard controls</text>
+  <text x="95" y="570" class="detail">Power button • PC13</text>
+  <text x="95" y="637" class="body">Cup detection</text>
+  <text x="95" y="670" class="detail">VL53L0X ToF • I2C2</text>
+
+  <!-- Controller -->
+  <rect x="490" y="155" width="640" height="710" class="panel controller"/>
+  <text x="810" y="205" text-anchor="middle" class="heading">STM32L475 Controller</text>
+  <text x="810" y="240" text-anchor="middle" class="detail">B-L475E-IOT01A1 • nonblocking superloop</text>
+  <rect x="560" y="280" width="500" height="95" class="block"/>
+  <text x="810" y="322" text-anchor="middle" class="heading">Read &amp; qualify inputs</text>
+  <text x="810" y="353" text-anchor="middle" class="detail">ADC • buttons • cup distance</text>
+  <rect x="560" y="415" width="500" height="95" class="block"/>
+  <text x="810" y="457" text-anchor="middle" class="heading">Safety checks</text>
+  <text x="810" y="488" text-anchor="middle" class="detail">Interlocks • faults • recovery</text>
+  <rect x="560" y="550" width="500" height="135" class="block"/>
+  <text x="810" y="591" text-anchor="middle" class="heading">Coffee State Machine</text>
+  <text x="810" y="627" text-anchor="middle" class="body">STANDBY → IDLE → HEATING → BREWING</text>
+  <text x="810" y="658" text-anchor="middle" class="body">COMPLETE • FAULT • CANCEL</text>
+
+  <!-- Outputs -->
+  <rect x="1200" y="185" width="345" height="250" class="panel output"/>
+  <text x="1372" y="235" text-anchor="middle" class="heading">Status LEDs</text>
+  <text x="1240" y="292" class="body">Ready • PB4</text>
+  <text x="1240" y="337" class="body">Heating • PB1</text>
+  <text x="1240" y="382" class="body">Fault • PA4</text>
+  <text x="1240" y="407" class="detail">Heartbeat • PB14</text>
+
+  <!-- PC digital twin -->
+  <rect x="1200" y="490" width="345" height="290" class="panel host"/>
+  <text x="1372" y="540" text-anchor="middle" class="heading">PC Digital Twin</text>
+  <text x="1240" y="595" class="body">Simulated heater &amp; pump</text>
+  <text x="1240" y="640" class="body">Thermal / water model</text>
+  <text x="1240" y="685" class="body">Dashboard &amp; telemetry</text>
+  <text x="1372" y="710" text-anchor="middle" class="detail">USART1 ↔ ST-LINK VCP</text>
+  <text x="1372" y="738" text-anchor="middle" class="detail">Telemetry ↔ commands</text>
+  <text x="1372" y="766" text-anchor="middle" class="detail">115200 8N1</text>
+
+  <!-- Supporting controller functions -->
+  <rect x="520" y="785" width="180" height="70" class="block"/>
+  <text x="610" y="815" text-anchor="middle" class="body">QSPI Storage</text>
+  <text x="610" y="842" text-anchor="middle" class="detail">Config • event log</text>
+  <rect x="720" y="785" width="180" height="70" class="block"/>
+  <text x="810" y="815" text-anchor="middle" class="body">UART Link</text>
+  <text x="810" y="842" text-anchor="middle" class="detail">USART1 • 115200</text>
+  <rect x="920" y="785" width="180" height="70" class="block"/>
+  <text x="1010" y="815" text-anchor="middle" class="body">LED Control</text>
+  <text x="1010" y="842" text-anchor="middle" class="detail">PB4/PB1/PA4/PB14</text>
+
+  <!-- Main data flow -->
+  <path d="M430 450 H525 V327 H550" class="arrow"/>
+  <path d="M810 375 V415" class="arrow"/>
+  <path d="M810 510 V550" class="arrow"/>
+  <path d="M1100 785 H1170 V300 H1200" class="arrow"/>
+  <path d="M810 785 V760 H1150 V750 H1200" class="both"/>
+  <path d="M635 685 V745 H610 V785" class="arrow"/>
+  <path d="M810 685 V785" class="arrow"/>
+  <path d="M985 685 V745 H1010 V785" class="arrow"/>
+
+  <text x="800" y="885" text-anchor="middle" class="detail">Heater and pump are simulated by the PC; the STM32 board does not switch mains power or a real pump.</text>
+</svg>

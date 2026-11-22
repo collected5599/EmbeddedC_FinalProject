@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#14212c"/><stop offset="1" stop-color="#0b131b"/></linearGradient><filter id="shadow" x="-10%" y="-10%" width="120%" height="125%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#000" flood-opacity=".24"/></filter></defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<text x="58" y="70" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">COFFEE MAKER · STEP-BY-STEP</text>
+<text x="58" y="126" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="700" fill="#f3f7f8">4. Heat to the selected target</text>
+<text x="60" y="164" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#aec0c8">This step appears when the simulated temperature starts below the selected target.</text>
+<rect x="55" y="194" width="720" height="600" rx="26" fill="#172733" stroke="#2b414f" stroke-width="2"/>
+<rect x="815" y="194" width="730" height="600" rx="26" fill="#172733" stroke="#2b414f" stroke-width="2"/>
+<text x="90" y="239" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#8fa8b3">MACHINE VIEW</text>
+<text x="850" y="239" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#8fa8b3">WHAT TO DO AND WHAT TO EXPECT</text>
+<rect x="255" y="266" width="430" height="395" rx="32" fill="#e7eeec" stroke="#ffffff" stroke-width="4"/>
+<rect x="279" y="290" width="382" height="110" rx="20" fill="#263b46"/>
+<rect x="295" y="306" width="82" height="77" rx="10" fill="#142b36"/>
+<text x="336" y="334" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#97b3bd">SIM</text>
+<rect x="304" y="347" width="64" height="27" rx="5" fill="#248899"/>
+<circle cx="425" cy="336" r="15" fill="#455761" stroke="#8da0a7" stroke-width="2"/>
+<circle cx="487" cy="336" r="15" fill="#f4c657" stroke="#8da0a7" stroke-width="2"/>
+<circle cx="549" cy="336" r="15" fill="#455761" stroke="#8da0a7" stroke-width="2"/>
+<circle cx="611" cy="336" r="15" fill="#55d887" stroke="#8da0a7" stroke-width="2"/>
+<text x="540" y="384" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#f1f6f6">HEATING</text>
+<rect x="367" y="421" width="206" height="42" rx="9" fill="#aebdc0"/>
+<rect x="437" y="463" width="66" height="102" fill="#2d424b"/>
+<rect x="412" y="565" width="116" height="15" rx="6" fill="#172a33"/>
+<path d="M387 620 L553 620 L539 705 Q470 733 401 705 Z" fill="#f7f8f3" stroke="#b9c7c7" stroke-width="4"/>
+<path d="M406 699.0 L535 699.0 L534 699 Q469 720 405 699 Z" fill="#774b32"/>
+<path d="M553 639 Q595 632 593 662 Q592 690 541 679" fill="none" stroke="#c0cdcd" stroke-width="9"/>
+<text x="467" y="758" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#8fa8b3">VIRTUAL MUG</text>
+<text x="467" y="785" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="500" fill="#c7d4d9">0% fill illustration</text>
+<line x1="850" y1="263" x2="1510" y2="263" stroke="#304754" stroke-width="2"/>
+<text x="850" y="300" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#62d7c6">YOUR ACTION</text>
+<text x="850" y="337" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="500" fill="#edf3f4">Turn the PC5 potentiometer to raise the simulated temperature.</text>
+<text x="850" y="390" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#62d7c6">CONTROLLER RESPONSE</text>
+<text x="850" y="426" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" fill="#c5d3d9">Temperature input maps to 20–110 °C. The controller</text>
+<text x="850" y="455" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" fill="#c5d3d9">requests 100% virtual heater power until 92 °C Normal</text>
+<text x="850" y="484" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="400" fill="#c5d3d9">or 95 °C Strong.</text>
+<text x="850" y="533" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#62d7c6">BOARD INDICATORS</text>
+<circle cx="864" cy="561" r="9" fill="#8798a1"/>
+<text x="885" y="567" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650" fill="#e7eef0">READY · PB4</text>
+<text x="1505" y="567" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#c4d2d8">OFF</text>
+<circle cx="864" cy="598" r="9" fill="#f4c657"/>
+<text x="885" y="604" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650" fill="#e7eef0">HEATING · PB1</text>
+<text x="1505" y="604" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#c4d2d8">BLINK 1 Hz</text>
+<circle cx="864" cy="635" r="9" fill="#8798a1"/>
+<text x="885" y="641" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650" fill="#e7eef0">FAULT · PA4</text>
+<text x="1505" y="641" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#c4d2d8">OFF</text>
+<circle cx="864" cy="672" r="9" fill="#55d887"/>
+<text x="885" y="678" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="650" fill="#e7eef0">HEARTBEAT · PB14</text>
+<text x="1505" y="678" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#c4d2d8">BLINK 1 Hz</text>
+<rect x="850" y="724" width="660" height="44" rx="12" fill="#203945"/>
+<text x="870" y="753" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#e1ecee">HEATER 100% VIRTUAL     PUMP OFF</text>
+<text x="58" y="832" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3e9eb">Cup is monitored during heating. Removing it for ≥200 ms causes NO_CUP fault.</text>
+<text x="1542" y="832" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#9db1bb">04 / 14</text>
+<rect x="58" y="856" width="1484" height="4" rx="2" fill="#263a46"/>
+<rect x="58" y="856" width="424.0" height="4" rx="2" fill="#58d6c6"/>
+<text x="58" y="886" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" fill="#80959f">Expected firmware behavior · coffee mode (IO_DIAGNOSTICS_MODE=0) · hardware validation pending · heater/pump are virtual</text>
+</svg>

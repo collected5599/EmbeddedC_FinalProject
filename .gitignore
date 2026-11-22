@@ -19,3 +19,10 @@
 Thumbs.db
 *.swp
 *.swo
+
+# Local Python digital-twin environment and cache
+DigitalTwin/.conda-env/
+DigitalTwin/.conda-pkgs/
+DigitalTwin/__pycache__/
+**/__pycache__/
+*.pyc

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#14212c"/><stop offset="1" stop-color="#0b131b"/></linearGradient><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#58d6c6"/></marker><marker id="redarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#ff6a70"/></marker></defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<text x="58" y="70" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">COFFEE MAKER · FIRMWARE IMPLEMENTATION</text>
+<text x="58" y="126" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="700" fill="#f3f7f8">12. CoffeeApp_Task: collect → decide → act</text>
+<text x="60" y="164" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#aec0c8">CoffeeApp_Task is the application coordinator between hardware readings, the FSM, and its output/reporting blocks.</text>
+<rect x="58" y="218" width="1484" height="548" rx="26" fill="#172733" stroke="#2b414f" stroke-width="2"/>
+<rect x="78" y="282" width="324" height="386" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="102" y="321" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">1 · READ INPUTS</text>
+<text x="102" y="360" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">coffee_app.c</text>
+<text x="102" y="424" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">PC13 / PD14 buttons: 30</text>
+<text x="102" y="449" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">ms qualification</text>
+<text x="102" y="488" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">PA3 strength switch</text>
+<text x="102" y="552" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">PC5 ADC → 20–110 °C</text>
+<text x="102" y="577" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">simulated temp</text>
+<text x="102" y="616" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">VL53L0X: 100 ms reads; 80</text>
+<text x="102" y="641" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">/ 100 mm hysteresis</text>
+<path d="M404 467 L437 467" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<rect x="451" y="282" width="324" height="386" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="475" y="321" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">2 · BUILD INPUT</text>
+<text x="475" y="360" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">CoffeeSmInput_t</text>
+<text x="475" y="424" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Current readings and</text>
+<text x="475" y="449" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">valid flags</text>
+<text x="475" y="488" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Button events + selected</text>
+<text x="475" y="513" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">strength</text>
+<text x="475" y="552" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Elapsed time since prior</text>
+<text x="475" y="577" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">task pass</text>
+<path d="M777 467 L810 467" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<rect x="824" y="282" width="324" height="386" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="848" y="321" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#f0c15a">3 · DECIDE</text>
+<text x="848" y="360" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">coffee_sm_step()</text>
+<text x="848" y="424" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">HAL-free state-machine</text>
+<text x="848" y="449" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">update</text>
+<text x="848" y="488" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Returns state, fault, LED</text>
+<text x="848" y="513" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">patterns</text>
+<text x="848" y="552" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Returns virtual heater /</text>
+<text x="848" y="577" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">pump requests</text>
+<path d="M1150 467 L1183 467" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<rect x="1197" y="282" width="324" height="386" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="1221" y="321" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">4 · APPLY + REPORT</text>
+<text x="1221" y="360" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">coffee_app.c</text>
+<text x="1221" y="424" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Drive GPIO LED patterns</text>
+<text x="1221" y="488" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Append events and stream</text>
+<text x="1221" y="513" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">QSPI records</text>
+<text x="1221" y="552" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Send USART1 STATUS every</text>
+<text x="1221" y="577" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">100 ms</text>
+<text x="1221" y="616" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Accept CMD,READ_LOGS from</text>
+<text x="1221" y="641" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">GUI</text>
+<text x="92" y="748" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="500" fill="#c4d1d7">ToF init is retried after startup / range errors; invalid distance is cleared and reported as cup_valid=0.</text>
+<text x="1542" y="832" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#9db1bb">12 / 14</text>
+<rect x="58" y="856" width="1272.0" height="4" rx="2" fill="#58d6c6"/>
+<text x="58" y="886" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" fill="#80959f">Coffee application is integrated in source · coffee-mode hardware behavior still needs validation</text>
+</svg>

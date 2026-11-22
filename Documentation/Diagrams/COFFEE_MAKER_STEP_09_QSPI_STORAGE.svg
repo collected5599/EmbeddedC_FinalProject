@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#14212c"/><stop offset="1" stop-color="#0b131b"/></linearGradient><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#58d6c6"/></marker></defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<text x="58" y="70" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">COFFEE MAKER · PROJECT DATA</text>
+<text x="58" y="126" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="700" fill="#f3f7f8">9. What the QSPI flash stores</text>
+<text x="60" y="164" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#aec0c8">The onboard serial flash keeps a compact history of important controller events.</text>
+<rect x="58" y="202" width="705" height="560" rx="26" fill="#172733" stroke="#2b414f" stroke-width="2"/>
+<rect x="795" y="202" width="747" height="560" rx="26" fill="#172733" stroke="#2b414f" stroke-width="2"/>
+<text x="92" y="248" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#8fa8b3">EVENT RECORD · 32 BYTES</text>
+<rect x="92" y="274" width="638" height="306" rx="18" fill="#203744" stroke="#355260" stroke-width="2"/>
+<text x="118" y="314" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#62d7c6">WHEN</text>
+<text x="338" y="314" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e7eef0">Sequence number · uptime tick</text>
+<text x="118" y="357" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#62d7c6">WHY</text>
+<text x="338" y="357" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e7eef0">Boot, state change, fault event</text>
+<text x="118" y="400" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#62d7c6">CONDITION</text>
+<text x="338" y="400" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e7eef0">State · fault · Normal / Strong</text>
+<text x="118" y="443" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#62d7c6">SENSORS</text>
+<text x="338" y="443" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e7eef0">Temperature · valid cup distance</text>
+<text x="118" y="486" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#62d7c6">OUTPUT REQUESTS</text>
+<text x="338" y="486" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e7eef0">Heater percent · pump on/off</text>
+<text x="118" y="529" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#62d7c6">CHECK</text>
+<text x="338" y="529" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e7eef0">CRC16 integrity value</text>
+<rect x="92" y="606" width="638" height="128" rx="16" fill="#14222c"/>
+<text x="120" y="638" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#62d7c6">LOCATION</text>
+<text x="120" y="670" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#edf3f4">Sectors 1–2 · alternating ToF profiles</text>
+<text x="120" y="698" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#edf3f4">Sectors 3–15 · circular event log</text>
+<text x="120" y="722" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#aebfc7">Sector 0 is untouched.</text>
+<text x="830" y="248" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#8fa8b3">HOW DATA MOVES</text>
+<rect x="835" y="280" width="192" height="130" rx="18" fill="#203744" stroke="#355260" stroke-width="2"/>
+<text x="931" y="320" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">1 · EVENT</text>
+<text x="931" y="355" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#e7eef0">Boot / state / fault</text>
+<rect x="1080" y="280" width="192" height="130" rx="18" fill="#203744" stroke="#355260" stroke-width="2"/>
+<text x="1176" y="320" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">2 · RECORD</text>
+<text x="1176" y="355" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#e7eef0">CRC + values</text>
+<rect x="1325" y="280" width="185" height="130" rx="18" fill="#203744" stroke="#355260" stroke-width="2"/>
+<text x="1417" y="320" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">3 · QSPI</text>
+<text x="1417" y="355" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#e7eef0">Write + verify</text>
+<path d="M1028 345 L1072 345 M1273 345 L1317 345" stroke="#58d6c6" stroke-width="4" marker-end="url(#arr)"/>
+<rect x="835" y="444" width="675" height="114" rx="18" fill="#17372f" stroke="#36725d" stroke-width="2"/>
+<text x="865" y="481" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#64dfa1">AVAILABLE NOW</text>
+<text x="865" y="507" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="500" fill="#e7eef0">Events are appended; startup scans existing records.</text>
+<text x="865" y="533" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="500" fill="#e7eef0">Each write is read-back checked.</text>
+<rect x="835" y="580" width="675" height="138" rx="18" fill="#392d20" stroke="#8a6737" stroke-width="2"/>
+<text x="865" y="617" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#f1c66f">LOG RETRIEVAL · IMPLEMENTED</text>
+<text x="865" y="654" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="500" fill="#f0e9dc">GUI sends CMD,READ_LOGS over USART1; STM32 returns CRC-valid QSPI events.</text>
+<text x="865" y="687" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="500" fill="#f0e9dc">View in the log table or save CSV. This command does not alter flash.</text>
+<text x="58" y="811" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3e9eb">Sectors 1–2 store calibrated cup thresholds; Read QSPI log downloads event history.</text>
+<text x="58" y="856" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" fill="#80959f">Read command and CSV export are implemented in software · hardware retrieval still needs validation</text>
+<text x="1542" y="811" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#9db1bb">09 / 14</text>
+</svg>

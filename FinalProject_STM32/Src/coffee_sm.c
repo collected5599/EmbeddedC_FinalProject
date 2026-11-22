@@ -70,7 +70,7 @@ static CoffeeFault_t find_fault(CoffeeSm_t *machine,
     }
 
     if (active_cycle) {
-        if (input->cup_sensor_valid && !input->cup_present) {
+        if (!input->cup_sensor_valid || !input->cup_present) {
             machine->cup_absent_ms = add_saturating(machine->cup_absent_ms,
                                                      input->delta_ms);
             if (machine->cup_absent_ms >= config->cup_absent_timeout_ms) {

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+ <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#101a25"/><stop offset="1" stop-color="#09111a"/></linearGradient>
+ <linearGradient id="metal" x2="0" y2="1"><stop stop-color="#edf2ef"/><stop offset="1" stop-color="#bcc9c9"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".26"/></filter>
+ <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#58d6c6"/></marker>
+ <style>
+ .title{font:700 44px 'Segoe UI',Arial,sans-serif;fill:#f2f7f8}.sub{font:400 20px 'Segoe UI',Arial,sans-serif;fill:#9eb2be}.card{fill:#172633;stroke:#2b4050;stroke-width:2}
+ .label{font:700 23px 'Segoe UI',Arial,sans-serif;fill:#eff5f6}.body{font:400 18px 'Segoe UI',Arial,sans-serif;fill:#c4d2d9}.small{font:600 15px 'Segoe UI',Arial,sans-serif;fill:#aabcc6}.micro{font:700 12px 'Segoe UI',Arial,sans-serif;fill:#eaf1f2}
+ .green{fill:#57d58b}.yellow{fill:#f0c45d}.red{fill:#fb6d71}.off{fill:#344751}.teal{fill:#58d6c6}
+ </style>
+</defs>
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<text x="70" y="76" class="title">COFFEE MAKER · HEATING TO COMPLETION</text>
+<text x="72" y="114" class="sub">The controller advances only while sensor inputs remain valid and the ToF sensor continues to see the cup.</text>
+<rect x="70" y="145" width="1780" height="68" rx="18" fill="#193541"/>
+<text x="96" y="188" class="body">LIVE INPUTS</text><text x="245" y="188" class="small">PC5 potentiometer → simulated temperature (20–110 °C)</text>
+<text x="802" y="188" class="small">VL53L0X / I2C2 → cup present below 80 mm · absent at 100 mm or farther</text>
+<text x="1510" y="188" class="small">PA3 → Normal / Strong</text>
+
+<!-- cards -->
+<g filter="url(#shadow)">
+ <rect x="70" y="260" width="550" height="700" rx="24" class="card"/>
+ <rect x="685" y="260" width="550" height="700" rx="24" class="card"/>
+ <rect x="1300" y="260" width="550" height="700" rx="24" class="card"/>
+</g>
+<text x="104" y="312" class="label">03 · HEATING</text><text x="719" y="312" class="label">04 · BREWING</text><text x="1334" y="312" class="label">05 · COMPLETE</text>
+
+<!-- heating machine -->
+<g>
+ <rect x="205" y="356" width="280" height="290" rx="18" fill="url(#metal)" stroke="#f5f7f4" stroke-width="3"/>
+ <rect x="224" y="373" width="242" height="70" rx="10" fill="#243844"/>
+ <rect x="236" y="385" width="56" height="46" rx="5" fill="#163b48"/><path d="M242 412 Q263 395 286 410 L286 425 L242 425Z" fill="#28798a"/>
+ <circle cx="325" cy="398" r="9" class="off"/><circle cx="356" cy="398" r="9" class="yellow"/><circle cx="387" cy="398" r="9" class="off"/><circle cx="418" cy="398" r="9" class="green"/>
+ <text x="328" y="428" class="micro">HEATING</text>
+ <rect x="282" y="460" width="126" height="28" rx="5" fill="#9caeb1"/><rect x="324" y="488" width="42" height="68" fill="#2b4048"/>
+ <path d="M270 585 L422 585 L411 626 Q345 646 281 626Z" fill="#f1f3ef" stroke="#c5d0d0" stroke-width="2"/><path d="M422 593 Q452 590 451 605 Q450 621 415 615" fill="none" stroke="#c5d0d0" stroke-width="7"/>
+ <path d="M303 535 C289 520 314 508 301 492 M345 535 C331 520 356 508 343 492 M387 535 C373 520 398 508 385 492" fill="none" stroke="#f0a94c" stroke-width="4"/>
+</g>
+<text x="108" y="690" class="body">• Heater request: 100% (virtual)</text><text x="108" y="722" class="body">• Pump request: OFF</text>
+<text x="108" y="754" class="body">• Target: 92 °C Normal / 95 °C Strong</text>
+<text x="108" y="786" class="body">• ToF checks cup throughout heating</text>
+<text x="108" y="831" class="small">PB4 READY: OFF</text><text x="108" y="856" class="small">PB1 HEATING: YELLOW · BLINK 1 Hz</text>
+<text x="108" y="881" class="small">PA4 FAULT: OFF · PB14 HEARTBEAT: BLINK 1 Hz</text>
+<rect x="108" y="907" width="473" height="33" rx="10" fill="#2d3e3c"/><text x="344" y="930" text-anchor="middle" class="small">Transition: simulated temperature reaches target</text>
+
+<!-- brewing machine, active stream and half-filled mug -->
+<g>
+ <rect x="820" y="356" width="280" height="290" rx="18" fill="url(#metal)" stroke="#f5f7f4" stroke-width="3"/>
+ <rect x="839" y="373" width="242" height="70" rx="10" fill="#243844"/>
+ <rect x="851" y="385" width="56" height="46" rx="5" fill="#163b48"/><path d="M857 412 Q878 395 901 410 L901 425 L857 425Z" fill="#28798a"/>
+ <circle cx="950" cy="398" r="9" class="off"/><circle cx="981" cy="398" r="9" class="yellow"/><circle cx="1012" cy="398" r="9" class="off"/><circle cx="1043" cy="398" r="9" class="green"/>
+ <text x="943" y="428" class="micro">BREWING</text>
+ <rect x="897" y="460" width="126" height="28" rx="5" fill="#9caeb1"/><rect x="939" y="488" width="42" height="68" fill="#2b4048"/>
+ <rect x="912" y="552" width="96" height="10" rx="4" fill="#172832"/>
+ <path d="M960 562 L960 595" stroke="#b77642" stroke-width="6" stroke-linecap="round"/><circle cx="960" cy="588" r="6" fill="#c48a58"/>
+ <path d="M892 599 L1028 599 L1017 634 Q960 652 903 634Z" fill="#f1f3ef" stroke="#c5d0d0" stroke-width="2"/><path d="M1028 606 Q1055 603 1054 617 Q1053 632 1021 626" fill="none" stroke="#c5d0d0" stroke-width="7"/>
+ <path d="M904 620 L1016 620 L1014 632 Q960 647 906 632Z" fill="#71482f"/>
+</g>
+<text x="723" y="690" class="body">• Heater holds the target temperature</text><text x="723" y="722" class="body">• Pump ON except during the 2 s bloom pause</text>
+<text x="723" y="754" class="body">• Normal: 20 s · Strong: 32 s pump time</text>
+<text x="723" y="786" class="body">• Cup absent ≥200 ms → NO_CUP fault</text>
+<text x="723" y="831" class="small">PB4 READY: OFF</text><text x="723" y="856" class="small">PB1 HEATING: YELLOW · ON</text>
+<text x="723" y="881" class="small">PA4 FAULT: OFF · PB14 HEARTBEAT: BLINK 1 Hz</text>
+<rect x="723" y="907" width="473" height="33" rx="10" fill="#2d3e3c"/><text x="959" y="930" text-anchor="middle" class="small">Transition: brew phases finish → pump OFF</text>
+
+<!-- completion machine -->
+<g>
+ <rect x="1435" y="356" width="280" height="290" rx="18" fill="url(#metal)" stroke="#f5f7f4" stroke-width="3"/>
+ <rect x="1454" y="373" width="242" height="70" rx="10" fill="#243844"/>
+ <rect x="1466" y="385" width="56" height="46" rx="5" fill="#163b48"/><path d="M1472 412 Q1493 395 1516 410 L1516 425 L1472 425Z" fill="#28798a"/>
+ <circle cx="1565" cy="398" r="9" class="green"/><circle cx="1596" cy="398" r="9" class="yellow"/><circle cx="1627" cy="398" r="9" class="off"/><circle cx="1658" cy="398" r="9" class="green"/>
+ <text x="1552" y="428" class="micro">COMPLETE</text>
+ <rect x="1512" y="460" width="126" height="28" rx="5" fill="#9caeb1"/><rect x="1554" y="488" width="42" height="68" fill="#2b4048"/>
+ <path d="M1507 585 L1643 585 L1632 634 Q1575 652 1518 634Z" fill="#f1f3ef" stroke="#c5d0d0" stroke-width="2"/><path d="M1643 593 Q1670 590 1669 605 Q1668 621 1636 615" fill="none" stroke="#c5d0d0" stroke-width="7"/>
+ <path d="M1519 606 L1631 606 L1629 632 Q1575 645 1521 632Z" fill="#71482f"/>
+</g>
+<text x="1338" y="690" class="body">• Heater request: OFF</text><text x="1338" y="722" class="body">• Pump request: OFF</text>
+<text x="1338" y="754" class="body">• Cup can be removed</text><text x="1338" y="786" class="body">• Returns to IDLE after 5 s</text>
+<text x="1338" y="831" class="small">PB4 READY: GREEN · BLINK 1 Hz</text><text x="1338" y="856" class="small">PB1 HEATING: YELLOW · BLINK 1 Hz</text>
+<text x="1338" y="881" class="small">PA4 FAULT: OFF · PB14 HEARTBEAT: BLINK 1 Hz</text>
+<rect x="1338" y="907" width="473" height="33" rx="10" fill="#2d3e3c"/><text x="1574" y="930" text-anchor="middle" class="small">Then IDLE · cup removal also ends COMPLETE</text>
+
+<!-- arrows -->
+<path d="M625 505 L680 505" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<path d="M1240 505 L1295 505" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<rect x="70" y="995" width="1780" height="50" rx="14" fill="#193541"/>
+<text x="96" y="1027" class="small">BREW TIMING: pre-infusion 2 s Normal / 5 s Strong · 2 s bloom pause · extraction completes at 20 s Normal / 32 s Strong pump-active time.</text>
+</svg>

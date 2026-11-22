@@ -28,7 +28,7 @@ All diagrams and detailed pin listings are maintained under `Documentation/`:
 | **Power On/Off** | `PC13` | *Onboard* | Input (Ext PU) | Active-Low, 10 kΩ onboard PU to 3.3V | User Button B2 (Blue, `BUTTON_EXTI13`; Note: B1 is NRST Reset) |
 | **Water Temp (Sim)** | `PC5` | **CN4 pin 1** (A0) | ADC1_IN14 | 0.0 V to 3.3 V analog input | 10 kΩ Potentiometer Wiper (20 °C – 110 °C) |
 | **Start / Cancel** | `PD14` | **CN3 pin 3** (D2) | Input (Int PU) | Active-Low to GND, internal ~40 kΩ PU | External Pushbutton (NO) |
-| **Normal / Strong** | `PA3` | **CN3 pin 5** (D4) | Input (Int PU) | Active-Low to GND, internal ~40 kΩ PU | External Lever Switch (SPST) |
+| **Normal / Strong** | `PA3` | **CN3 pin 5** (D4) | Input (Int PU) | Active-Low via 3-terminal SPDT selector: COM to PA3, one throw to GND, other throw open | External 2-position toggle switch |
 | **Ready LED** | `PB4` | **CN3 pin 6** (D5) | Output PP | **150 Ω** (InGaN 525nm, $V_f=3.0\text{--}3.2\text{ V}$) or **330 Ω** (GaP 565nm) | External Green LED |
 | **Heating / Brewing** | `PB1` | **CN3 pin 7** (D6) | Output PP | **330 Ω** resistor, $V_f=2.0\text{--}2.2\text{ V}$, $I\approx 3.6\text{ mA}$ | External Yellow LED |
 | **Fault LED** | `PA4` | **CN3 pin 8** (D7) | Output PP | **330 Ω** resistor, $V_f=2.0\text{--}2.2\text{ V}$, $I\approx 3.9\text{ mA}$ | External Red LED |

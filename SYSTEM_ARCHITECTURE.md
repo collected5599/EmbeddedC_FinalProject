@@ -19,7 +19,7 @@ The **STM32 IoT Coffee Maker** is an embedded cyber-physical system split cleanl
 ```mermaid
 flowchart TB
     subgraph Physical_Hardware ["Physical Hardware Layer"]
-        BB["External Breadboard<br/>• Potentiometer (PC5)<br/>• Pushbutton (PD14)<br/>• Lever Switch (PA3)<br/>• 3x Status LEDs (PB4, PB1, PA4)"]
+        BB["External Breadboard<br/>• Potentiometer (PC5)<br/>• Pushbutton (PD14)<br/>• 3-terminal SPDT strength selector (PA3)<br/>• 3x Status LEDs (PB4, PB1, PA4)"]
         BOARD["B-L475E-IOT01A1 Board<br/>• User Button B2 (PC13, BUTTON_EXTI13)<br/>• Heartbeat LED2 (PB14)<br/>• VL53L0X ToF Cup Sensor (I2C2)<br/>• MX25R6435F 8 MB Flash (QUADSPI)"]
     end
 
@@ -57,6 +57,8 @@ The STM32L475VGT6 is clocked at 80 MHz via its internal Phase-Locked Loop (PLL) 
 ---
 
 ## 3. QSPI Flash Storage Subsystem Architecture
+
+**Implementation status (2026-11-21):** The firmware now reads the Macronix JEDEC ID and has an initial CRC-protected circular event logger in sectors 3–15. Operations currently use single-line serial commands through QUADSPI and bounded blocking transfers. Ping-pong configuration persistence, pre-erase scheduling, UART log retrieval, and exhaustive power-loss/wear validation remain planned work; the detailed design below describes those target behaviors.
 
 The **Macronix MX25R6435F** is an 8 Megabyte (64 Mbit) serial NOR flash partitioned into 2,048 sectors of 4 Kilobytes each. To achieve maximum reliability, wear-leveling, and power-loss immunity without third-party library overhead, a **Ping-Pong Sector Architecture with Circular Binary Logging** is implemented.
 
@@ -127,7 +129,7 @@ stateDiagram-v2
 * **`STATE_BREWING`**: Target temperature satisfied. Executes a two-phase brew cycle:
   1. **Pre-infusion phase**: Virtual pump runs for `preinfusion_time_s` (default: 2 s normal, 5 s strong), then pauses for 2 s to bloom the coffee bed.
   2. **Extraction phase**: Virtual pump runs for the remainder of `brew_time_s` (20 s normal, 32 s strong).
-  Yellow LED is illuminated solid throughout. Lever switch is latched at brew start; lever toggles during active brewing are ignored until the cycle completes.
+  Yellow LED is illuminated solid throughout. Strength selector state is latched at brew start; switch changes during active brewing are ignored until the cycle completes.
 * **`STATE_COMPLETE`**: Pump commanded OFF. Green and Yellow LEDs blink synchronously for 5 s. Completion record written to QSPI flash log. Lifetime brew count incremented in Sector 2.
 * **`STATE_FAULT`**: Triggered immediately on safety interlock violation. Red LED (`PA4`) flashes rapidly at 4 Hz. Virtual pump and heater immediately shut down BEFORE enqueuing fault log. Machine latches in fault until manually cleared:
   * Pressing Start/Cancel (PD14) evaluates whether the **specific active fault condition** has cleared (e.g., cup returned for `FAULT_NO_CUP`, temp $< 80.0^\circ\text{C}$ for `FAULT_OVERTEMP`, water tank refilled for `FAULT_TANK_EMPTY`). If cleared, `fault_manager_clear_fault()` is invoked and the state machine transitions to `STATE_IDLE`.

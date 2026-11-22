@@ -53,6 +53,7 @@
     <circle cx="47" cy="127" r="10" fill="#2563eb"/>
     <text x="18" y="160" fill="#93c5fd" font-size="10" font-weight="bold">B2 (PC13)</text>
     <text x="14" y="172" fill="#cbd5e1" font-size="8">BUTTON_EXTI13</text>
+    <text x="14" y="184" fill="#94a3b8" font-size="7">Onboard pull-up + capacitor network</text>
 
     <!-- Onboard LED2 (PB14) -->
     <circle cx="47" cy="205" r="5" fill="#22c55e" filter="url(#glow-green)"/>
@@ -66,35 +67,71 @@
     <text x="178" y="192" fill="#cbd5e1" font-size="9">Cup Sensor (I2C2)</text>
 
     <!-- ================= HEADERS ================= -->
-    <!-- Header CN3: Digital D0 - D7 (Top Right) -->
-    <g transform="translate(140, 25)">
+    <!-- Header CN3: Digital D0 - D7 (Top Right), pin 1 / D0 at right end -->
+    <g transform="translate(240, 25)">
       <rect x="0" y="0" width="190" height="22" rx="3" fill="#020617" stroke="#475569"/>
       <text x="60" y="-6" fill="#f8fafc" font-size="11" font-weight="bold">CN3 (Digital D0–D7)</text>
-      <!-- 8 Header Pins -->
-      <!-- Pin 1: D0 (PA1) -->
-      <circle cx="15" cy="11" r="4.5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
-      <text x="10" y="32" fill="#94a3b8" font-size="8">D0</text>
-      <!-- Pin 2: D1 (PA0) -->
-      <circle cx="38" cy="11" r="4.5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
-      <text x="33" y="32" fill="#94a3b8" font-size="8">D1</text>
-      <!-- Pin 3: D2 (PD14) -->
-      <circle id="pin-cn3-3" cx="61" cy="11" r="5" fill="#eab308" stroke="#ffffff" stroke-width="2"/>
-      <text x="53" y="32" fill="#fde047" font-size="8" font-weight="bold">D2</text>
-      <!-- Pin 4: D3 (PB0) -->
-      <circle cx="84" cy="11" r="4.5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
-      <text x="79" y="32" fill="#94a3b8" font-size="8">D3</text>
-      <!-- Pin 5: D4 (PA3) -->
-      <circle id="pin-cn3-5" cx="107" cy="11" r="5" fill="#f97316" stroke="#ffffff" stroke-width="2"/>
-      <text x="99" y="32" fill="#fdba74" font-size="8" font-weight="bold">D4</text>
-      <!-- Pin 6: D5 (PB4) -->
-      <circle id="pin-cn3-6" cx="130" cy="11" r="5" fill="#22c55e" stroke="#ffffff" stroke-width="2"/>
-      <text x="122" y="32" fill="#86efac" font-size="8" font-weight="bold">D5</text>
-      <!-- Pin 7: D6 (PB1) -->
-      <circle id="pin-cn3-7" cx="153" cy="11" r="5" fill="#eab308" stroke="#ffffff" stroke-width="2"/>
-      <text x="145" y="32" fill="#fde047" font-size="8" font-weight="bold">D6</text>
+      <!-- Pins are shown left-to-right as pin 8 through pin 1, so D0 is rightmost -->
       <!-- Pin 8: D7 (PA4) -->
-      <circle id="pin-cn3-8" cx="176" cy="11" r="5" fill="#ef4444" stroke="#ffffff" stroke-width="2"/>
-      <text x="168" y="32" fill="#fca5a5" font-size="8" font-weight="bold">D7</text>
+      <circle id="pin-cn3-8" cx="15" cy="11" r="5" fill="#ef4444" stroke="#ffffff" stroke-width="2"/>
+      <text x="7" y="32" fill="#fca5a5" font-size="8" font-weight="bold">D7</text>
+      <!-- Pin 7: D6 (PB1) -->
+      <circle id="pin-cn3-7" cx="38" cy="11" r="5" fill="#eab308" stroke="#ffffff" stroke-width="2"/>
+      <text x="30" y="32" fill="#fde047" font-size="8" font-weight="bold">D6</text>
+      <!-- Pin 6: D5 (PB4) -->
+      <circle id="pin-cn3-6" cx="61" cy="11" r="5" fill="#22c55e" stroke="#ffffff" stroke-width="2"/>
+      <text x="53" y="32" fill="#86efac" font-size="8" font-weight="bold">D5</text>
+      <!-- Pin 5: D4 (PA3) -->
+      <circle id="pin-cn3-5" cx="84" cy="11" r="5" fill="#f97316" stroke="#ffffff" stroke-width="2"/>
+      <text x="76" y="32" fill="#fdba74" font-size="8" font-weight="bold">D4</text>
+      <!-- Pin 4: D3 (PB0) -->
+      <circle cx="107" cy="11" r="4.5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="102" y="32" fill="#94a3b8" font-size="8">D3</text>
+      <!-- Pin 3: D2 (PD14) -->
+      <circle id="pin-cn3-3" cx="130" cy="11" r="5" fill="#eab308" stroke="#ffffff" stroke-width="2"/>
+      <text x="122" y="32" fill="#fde047" font-size="8" font-weight="bold">D2</text>
+      <!-- Pin 2: D1 (PA0) -->
+      <circle cx="153" cy="11" r="4.5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="145" y="32" fill="#94a3b8" font-size="8">D1</text>
+      <!-- Pin 1: D0 (PA1), rightmost -->
+      <circle cx="176" cy="11" r="4.5" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="168" y="32" fill="#94a3b8" font-size="8">D0</text>
+    </g>
+
+    <!-- Header CN1: Digital D8 - D15 (Top Left); no project wires use these pins -->
+    <g transform="translate(20, 25)">
+      <rect x="0" y="0" width="190" height="22" rx="3" fill="#020617" stroke="#475569"/>
+      <text x="60" y="-6" fill="#f8fafc" font-size="11" font-weight="bold">CN1 (Digital D8–D15)</text>
+      <!-- Pin 1: D8 (PB2) -->
+      <circle cx="13" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="9" y="32" fill="#94a3b8" font-size="7">D8</text>
+      <!-- Pin 2: D9 (PA15) -->
+      <circle cx="31" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="27" y="32" fill="#94a3b8" font-size="7">D9</text>
+      <!-- Pin 3: D10 (PA2) -->
+      <circle cx="49" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="44" y="32" fill="#94a3b8" font-size="7">D10</text>
+      <!-- Pin 4: D11 (PA7) -->
+      <circle cx="67" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="62" y="32" fill="#94a3b8" font-size="7">D11</text>
+      <!-- Pin 5: D12 (PA6) -->
+      <circle cx="85" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="80" y="32" fill="#94a3b8" font-size="7">D12</text>
+      <!-- Pin 6: D13 (PA5) -->
+      <circle cx="103" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="98" y="32" fill="#94a3b8" font-size="7">D13</text>
+      <!-- Pin 7: GND -->
+      <circle cx="121" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="116" y="32" fill="#94a3b8" font-size="7">GND</text>
+      <!-- Pin 8: AREF -->
+      <circle cx="139" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="133" y="32" fill="#94a3b8" font-size="7">AREF</text>
+      <!-- Pin 9: SDA (PB9) -->
+      <circle cx="157" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="153" y="32" fill="#94a3b8" font-size="7">SDA</text>
+      <!-- Pin 10: SCL (PB8) -->
+      <circle cx="175" cy="11" r="4" fill="#1e293b" stroke="#cbd5e1"/>
+      <text x="171" y="32" fill="#94a3b8" font-size="7">SCL</text>
     </g>
 
     <!-- Header CN2: Power (Bottom Left) -->
@@ -185,7 +222,7 @@
 
     <!-- ================= COMPONENT 1: POTENTIOMETER ================= -->
     <g transform="translate(60, 90)">
-      <rect x="-10" y="-10" width="130" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+      <rect x="-10" y="-10" width="130" height="230" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="3 3"/>
       <!-- Potentiometer Housing -->
       <circle cx="55" cy="65" r="32" fill="#334155" stroke="#64748b" stroke-width="2"/>
       <circle cx="55" cy="65" r="22" fill="#0284c7"/>
@@ -197,9 +234,19 @@
       <circle id="bb-pot-p2" cx="55" cy="130" r="4.5" fill="#3b82f6"/>
       <circle id="bb-pot-p3" cx="85" cy="130" r="4.5" fill="#0284c7"/>
       
-      <text x="18" y="150" fill="#475569" font-size="9" font-weight="bold">3.3V</text>
-      <text x="44" y="150" fill="#2563eb" font-size="9" font-weight="bold">Wiper</text>
-      <text x="76" y="150" fill="#475569" font-size="9" font-weight="bold">GND</text>
+      <text x="18" y="120" fill="#475569" font-size="9" font-weight="bold">3.3V</text>
+      <text x="44" y="120" fill="#2563eb" font-size="9" font-weight="bold">Wiper</text>
+      <text x="76" y="120" fill="#475569" font-size="9" font-weight="bold">GND</text>
+
+      <!-- Optional C1 is wired in parallel between the wiper and ground -->
+      <line x1="55" y1="134" x2="55" y2="163" stroke="#2563eb" stroke-width="2"/>
+      <line x1="55" y1="163" x2="65" y2="163" stroke="#2563eb" stroke-width="2"/>
+      <line x1="65" y1="163" x2="75" y2="163" stroke="#475569" stroke-width="2.5"/>
+      <line x1="65" y1="171" x2="75" y2="171" stroke="#475569" stroke-width="2.5"/>
+      <line x1="75" y1="171" x2="85" y2="171" stroke="#475569" stroke-width="2"/>
+      <line x1="85" y1="171" x2="85" y2="134" stroke="#475569" stroke-width="2"/>
+      <text x="43" y="192" fill="#1e293b" font-size="8" font-weight="bold">C1 100 nF</text>
+      <text x="27" y="204" fill="#64748b" font-size="7">PC5 wiper to GND</text>
       
       <text x="10" y="17" fill="#1e293b" font-size="11" font-weight="bold">10 kΩ Potentiometer</text>
       <text x="18" y="30" fill="#64748b" font-size="9">Simulated Temp</text>
@@ -207,7 +254,7 @@
 
     <!-- ================= COMPONENT 2: START / CANCEL BUTTON ================= -->
     <g transform="translate(230, 90)">
-      <rect x="-10" y="-10" width="125" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+      <rect x="-10" y="-10" width="125" height="205" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="3 3"/>
       <!-- Tactile Button Body -->
       <rect x="25" y="45" width="45" height="45" rx="5" fill="#1e293b" stroke="#475569" stroke-width="2"/>
       <circle cx="47.5" cy="67.5" r="14" fill="#eab308"/>
@@ -218,29 +265,35 @@
       
       <text x="18" y="150" fill="#ca8a04" font-size="9" font-weight="bold">PD14</text>
       <text x="54" y="150" fill="#475569" font-size="9" font-weight="bold">GND</text>
+      <text x="14" y="166" fill="#64748b" font-size="7">PD14 internal pull-up</text>
       
       <text x="8" y="17" fill="#1e293b" font-size="11" font-weight="bold">Start / Cancel PB</text>
       <text x="14" y="30" fill="#64748b" font-size="9">Active-Low (NO)</text>
     </g>
 
-    <!-- ================= COMPONENT 3: LEVER SWITCH ================= -->
+    <!-- ================= COMPONENT 3: SPDT STRENGTH SELECTOR ================= -->
     <g transform="translate(395, 90)">
-      <rect x="-10" y="-10" width="125" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="3 3"/>
+      <rect x="-10" y="-10" width="125" height="220" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="3 3"/>
       <!-- Switch Body -->
       <rect x="25" y="48" width="46" height="38" rx="4" fill="#334155" stroke="#475569" stroke-width="2"/>
       <!-- Toggle Lever -->
       <line x1="48" y1="67" x2="48" y2="44" stroke="#94a3b8" stroke-width="6" stroke-linecap="round"/>
       <circle cx="48" cy="42" r="5" fill="#cbd5e1"/>
       
-      <!-- Terminals -->
-      <circle id="bb-sw-t1" cx="34" cy="130" r="4.5" fill="#f97316"/>
-      <circle id="bb-sw-t2" cx="62" cy="130" r="4.5" fill="#0284c7"/>
-      
-      <text x="23" y="150" fill="#ea580c" font-size="9" font-weight="bold">PA3</text>
-      <text x="53" y="150" fill="#475569" font-size="9" font-weight="bold">GND</text>
-      
-      <text x="14" y="17" fill="#1e293b" font-size="11" font-weight="bold">Lever Switch</text>
-      <text x="6" y="30" fill="#64748b" font-size="9">Norm/Strong (PA3)</text>
+      <!-- Three terminals: COM to PA3, one throw to GND, other throw unused -->
+      <circle id="bb-sw-gnd-throw" cx="25" cy="130" r="4.5" fill="#0284c7"/>
+      <circle id="bb-sw-common" cx="48" cy="130" r="4.5" fill="#f97316"/>
+      <circle id="bb-sw-unused-throw" cx="73" cy="130" r="4.5" fill="#94a3b8"/>
+
+      <text x="11" y="150" fill="#475569" font-size="8" font-weight="bold">GND</text>
+      <text x="38" y="150" fill="#ea580c" font-size="8" font-weight="bold">COM</text>
+      <text x="64" y="150" fill="#475569" font-size="8" font-weight="bold">OPEN</text>
+      <text x="28" y="164" fill="#ea580c" font-size="7" font-weight="bold">PA3 to COM</text>
+      <text x="2" y="180" fill="#64748b" font-size="7">GND = Strong • Open = Normal</text>
+      <text x="8" y="193" fill="#64748b" font-size="7">PA3 internal pull-up</text>
+
+      <text x="8" y="17" fill="#1e293b" font-size="10" font-weight="bold">3-terminal Selector</text>
+      <text x="2" y="30" fill="#64748b" font-size="8">Normal / Strong (SPDT)</text>
     </g>
 
     <!-- ================= COMPONENT 4: GREEN READY LED ================= -->
@@ -261,9 +314,12 @@
       
       <circle id="bb-led-grn-in" cx="46" cy="10" r="4.5" fill="#22c55e"/>
       <circle id="bb-led-grn-gnd" cx="46" cy="160" r="4.5" fill="#0284c7"/>
+      <line x1="46" y1="14.5" x2="46" y2="45" stroke="#166534" stroke-width="2.5"/>
+      <line x1="46" y1="87" x2="46" y2="106" stroke="#166534" stroke-width="2.5"/>
+      <line x1="46" y1="134" x2="46" y2="155.5" stroke="#166534" stroke-width="2.5"/>
       
       <text x="14" y="195" fill="#166534" font-size="10" font-weight="bold">Ready (PB4)</text>
-      <text x="14" y="206" fill="#64748b" font-size="8">Vf: 3.0–3.2V</text>
+      <text x="14" y="206" fill="#64748b" font-size="8">Assumed LED Vf: 3.0–3.2V</text>
     </g>
 
     <!-- ================= COMPONENT 5: YELLOW HEATING LED ================= -->
@@ -284,6 +340,9 @@
       
       <circle id="bb-led-yel-in" cx="46" cy="10" r="4.5" fill="#eab308"/>
       <circle id="bb-led-yel-gnd" cx="46" cy="160" r="4.5" fill="#0284c7"/>
+      <line x1="46" y1="14.5" x2="46" y2="45" stroke="#854d0e" stroke-width="2.5"/>
+      <line x1="46" y1="87" x2="46" y2="106" stroke="#854d0e" stroke-width="2.5"/>
+      <line x1="46" y1="134" x2="46" y2="155.5" stroke="#854d0e" stroke-width="2.5"/>
       
       <text x="6" y="195" fill="#854d0e" font-size="10" font-weight="bold">Heating (PB1)</text>
       <text x="14" y="206" fill="#64748b" font-size="8">Vf: 2.0–2.2V</text>
@@ -307,6 +366,9 @@
       
       <circle id="bb-led-red-in" cx="46" cy="10" r="4.5" fill="#ef4444"/>
       <circle id="bb-led-red-gnd" cx="46" cy="160" r="4.5" fill="#0284c7"/>
+      <line x1="46" y1="14.5" x2="46" y2="45" stroke="#991b1b" stroke-width="2.5"/>
+      <line x1="46" y1="87" x2="46" y2="106" stroke="#991b1b" stroke-width="2.5"/>
+      <line x1="46" y1="134" x2="46" y2="155.5" stroke="#991b1b" stroke-width="2.5"/>
       
       <text x="16" y="195" fill="#991b1b" font-size="10" font-weight="bold">Fault (PA4)</text>
       <text x="14" y="206" fill="#64748b" font-size="8">Vf: 2.0–2.2V</text>
@@ -319,8 +381,8 @@
     <path d="M 145 220 L 145 42" stroke="#0284c7" stroke-width="2.5" fill="none"/>
     <!-- Pushbutton Terminal 2 to Blue Rail -->
     <path d="M 293 220 L 293 42" stroke="#0284c7" stroke-width="2.5" fill="none"/>
-    <!-- Lever Switch Terminal 2 to Blue Rail -->
-    <path d="M 457 220 L 457 42" stroke="#0284c7" stroke-width="2.5" fill="none"/>
+    <!-- Selected switch throw to Blue Rail; leave other throw open -->
+    <path d="M 420 220 L 420 42" stroke="#0284c7" stroke-width="2.5" fill="none"/>
     <!-- Green LED Cathode to Blue Rail -->
     <path d="M 606 250 L 606 42" stroke="#0284c7" stroke-width="2.5" fill="none"/>
     <!-- Yellow LED Cathode to Blue Rail -->
@@ -331,32 +393,32 @@
 
   <!-- ==================== INTER-BOARD JUMPER WIRES ==================== -->
   <!-- Wire W1: CN2 Pin 4 (3.3V) -> Breadboard Red Rail (Red) -->
-  <path d="M 244 336 C 244 420, 50 420, 50 500" stroke="#ef4444" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M 244 336 C 244 420, 180 420, 180 500" stroke="#ef4444" stroke-width="3.5" fill="none" stroke-linecap="round"/>
   
   <!-- Wire W2: CN2 Pin 6 (GND) -> Breadboard Blue Rail (Black/Dark Blue) -->
-  <path d="M 290 336 C 290 440, 70 440, 70 522" stroke="#0284c7" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M 290 336 C 290 440, 180 440, 180 522" stroke="#0284c7" stroke-width="3.5" fill="none" stroke-linecap="round"/>
 
   <!-- Wire W4: CN4 Pin 1 (PC5 / A0) -> Potentiometer Wiper (Blue) -->
-  <path d="M 380 336 C 380 430, 175 430, 175 610" stroke="#3b82f6" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 380 336 C 380 430, 175 430, 175 700" stroke="#3b82f6" stroke-width="3" fill="none" stroke-linecap="round"/>
 
   <!-- Wire W6: CN3 Pin 3 (PD14 / D2) -> Pushbutton Terminal 1 (Yellow) -->
-  <path d="M 261 111 C 261 40, 520 40, 520 380 C 520 450, 262 450, 262 610" stroke="#eab308" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 430 111 C 430 40, 520 40, 520 380 C 520 450, 322 450, 322 700" stroke="#eab308" stroke-width="3" fill="none" stroke-linecap="round"/>
 
-  <!-- Wire W8: CN3 Pin 5 (PA3 / D4) -> Lever Switch Terminal 1 (Orange) -->
-  <path d="M 307 111 C 307 50, 540 50, 540 390 C 540 450, 429 450, 429 610" stroke="#f97316" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Wire W8: CN3 Pin 5 (PA3 / D4) -> selector common terminal (Orange) -->
+  <path d="M 384 111 C 384 50, 540 50, 540 390 C 540 450, 503 450, 503 700" stroke="#f97316" stroke-width="3" fill="none" stroke-linecap="round"/>
 
   <!-- Wire W10: CN3 Pin 6 (PB4 / D5) -> Ready LED Resistor (Green) -->
-  <path d="M 330 111 C 330 60, 606 60, 606 490" stroke="#22c55e" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 361 111 C 361 60, 666 60, 666 580" stroke="#22c55e" stroke-width="3" fill="none" stroke-linecap="round"/>
 
   <!-- Wire W13: CN3 Pin 7 (PB1 / D6) -> Heating LED Resistor (White/Amber) -->
-  <path d="M 353 111 C 353 70, 751 70, 751 490" stroke="#fbbf24" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 338 111 C 338 70, 811 70, 811 580" stroke="#fbbf24" stroke-width="3" fill="none" stroke-linecap="round"/>
 
   <!-- Wire W16: CN3 Pin 8 (PA4 / D7) -> Fault LED Resistor (Purple) -->
-  <path d="M 376 111 C 376 80, 896 80, 896 490" stroke="#a855f7" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 315 111 C 315 80, 956 80, 956 580" stroke="#a855f7" stroke-width="3" fill="none" stroke-linecap="round"/>
 
   <!-- Wire Labels Badge in Upper Right -->
   <g transform="translate(680, 85)" filter="url(#shadow)">
-    <rect x="0" y="0" width="360" height="280" rx="8" fill="#181825" stroke="#313244" stroke-width="1.5"/>
+    <rect x="0" y="0" width="360" height="348" rx="8" fill="#181825" stroke="#313244" stroke-width="1.5"/>
     <text x="18" y="26" fill="#cdd6f4" font-size="13" font-weight="bold">Jumper Wire Routing Legend</text>
     
     <circle cx="28" cy="55" r="5" fill="#ef4444"/>
@@ -372,7 +434,7 @@
     <text x="45" y="149" fill="#bac2de" font-size="11"><tspan font-weight="bold" fill="#f9e2af">Yellow:</tspan> CN3 pin 3 (PD14) → Pushbutton (Start)</text>
 
     <circle cx="28" cy="175" r="5" fill="#f97316"/>
-    <text x="45" y="179" fill="#bac2de" font-size="11"><tspan font-weight="bold" fill="#fab387">Orange:</tspan> CN3 pin 5 (PA3) → Lever Switch (Strength)</text>
+    <text x="45" y="179" fill="#bac2de" font-size="11"><tspan font-weight="bold" fill="#fab387">Orange:</tspan> CN3 pin 5 (PA3) → Selector COM</text>
 
     <circle cx="28" cy="205" r="5" fill="#22c55e"/>
     <text x="45" y="209" fill="#bac2de" font-size="11"><tspan font-weight="bold" fill="#a6e3a1">Green:</tspan> CN3 pin 6 (PB4) → 150 Ω → Ready LED</text>
@@ -382,5 +444,9 @@
 
     <circle cx="28" cy="265" r="5" fill="#a855f7"/>
     <text x="45" y="269" fill="#bac2de" font-size="11"><tspan font-weight="bold" fill="#cba6f7">Purple:</tspan> CN3 pin 8 (PA4) → 330 Ω → Fault LED</text>
+
+    <text x="18" y="295" fill="#f9e2af" font-size="9">PA3 to COM; ground one outer throw; leave the other open.</text>
+    <text x="18" y="312" fill="#f9e2af" font-size="9">Identify COM and throws with a continuity meter first.</text>
+    <text x="18" y="329" fill="#f9e2af" font-size="9">NOT TO SCALE: use PCB silkscreen, not pin counting.</text>
   </g>
 </svg>

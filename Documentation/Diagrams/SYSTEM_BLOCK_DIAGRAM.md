@@ -11,7 +11,7 @@ flowchart TB
     subgraph External_Breadboard ["External Breadboard Subsystem"]
         POT["10 kΩ Potentiometer<br/>(Simulated Water Temp)<br/>3.3V <--> GND"]
         BTN_EXT["External Pushbutton<br/>(Start / Cancel)<br/>Active-Low to GND"]
-        SW_LEV["Lever Switch<br/>(Normal / Strong)<br/>Active-Low to GND"]
+        SW_LEV["3-terminal SPDT strength selector<br/>(Normal / Strong)<br/>PA3 COM, one throw to GND"]
         
         LED_GRN["Green LED (Ready)<br/>Vf = 3.0-3.2V<br/>Series Resistor: 150 Ω"]
         LED_YEL["Yellow LED (Heat/Brew)<br/>Vf = 2.0-2.2V<br/>Series Resistor: 330 Ω"]
@@ -122,7 +122,7 @@ flowchart TB
 * **User Buttons & Switches**:
   * **PC13 (Onboard User Button B2, BUTTON_EXTI13)**: System Power Toggle (Standby vs Active). Note: B1 is NRST Reset button.
   * **PD14 (External Pushbutton)**: Brew Start / Abort command.
-  * **PA3 (External Lever Switch)**: Coffee profile selector:
+  * **PA3 (External SPDT Strength Selector)**: Coffee profile selector:
     * Logic High (`1`): Normal Brew (Standard water volume & duration).
     * Logic Low (`0`): Strong Brew (Extended pre-infusion & extraction profile).
 * **Cup Presence Sensor (VL53L0X)**:

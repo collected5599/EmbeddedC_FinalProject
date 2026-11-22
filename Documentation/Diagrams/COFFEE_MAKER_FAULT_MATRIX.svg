@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .title { font-size: 38px; font-weight: 700; }
+      .subtitle { font-size: 21px; fill: #536078; }
+      .colhead { font-size: 22px; font-weight: 700; fill: #fff; }
+      .condition { font-size: 22px; font-weight: 700; }
+      .body { font-size: 19px; fill: #36435a; }
+      .foot { font-size: 18px; fill: #536078; }
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#f7f9fc"/>
+  <text x="800" y="62" text-anchor="middle" class="title">Coffee Maker — Fault Matrix</text>
+  <text x="800" y="101" text-anchor="middle" class="subtitle">Trigger thresholds and recovery conditions • aligned with coffee_sm.c defaults</text>
+
+  <!-- Header -->
+  <rect x="55" y="145" width="300" height="70" rx="12" fill="#334155"/>
+  <rect x="355" y="145" width="660" height="70" fill="#334155"/>
+  <rect x="1015" y="145" width="530" height="70" rx="12" fill="#334155"/>
+  <text x="205" y="189" text-anchor="middle" class="colhead">Condition</text>
+  <text x="685" y="189" text-anchor="middle" class="colhead">When it triggers</text>
+  <text x="1280" y="189" text-anchor="middle" class="colhead">Response / recovery</text>
+
+  <!-- Row 1 -->
+  <rect x="55" y="225" width="1490" height="90" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="80" y="279" class="condition">Start without cup</text>
+  <text x="380" y="261" class="body">IDLE • Start pressed while valid ToF data</text>
+  <text x="380" y="288" class="body">shows no cup.</text>
+  <text x="1040" y="261" class="body">Stay in IDLE; ignore and log</text>
+  <text x="1040" y="288" class="body">the start request.</text>
+
+  <!-- Row 2 -->
+  <rect x="55" y="323" width="1490" height="90" rx="10" fill="#f0f5fb" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="80" y="377" class="condition">Cup removed</text>
+  <text x="380" y="359" class="body">HEATING or BREWING • valid ToF reports</text>
+  <text x="380" y="386" class="body">no cup continuously for at least 200 ms.</text>
+  <text x="1040" y="359" class="body">Enter FAULT; restore valid cup</text>
+  <text x="1040" y="386" class="body">detection, then press Start.</text>
+
+  <!-- Row 3 -->
+  <rect x="55" y="421" width="1490" height="90" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="80" y="475" class="condition">Overtemperature</text>
+  <text x="380" y="457" class="body">IDLE, HEATING, BREWING or COMPLETE •</text>
+  <text x="380" y="484" class="body">valid temperature reading is greater than 102 °C.</text>
+  <text x="1040" y="457" class="body">Enter FAULT; wait for valid</text>
+  <text x="1040" y="484" class="body">temperature below 80 °C, then Start.</text>
+
+  <!-- Row 4 -->
+  <rect x="55" y="519" width="1490" height="90" rx="10" fill="#f0f5fb" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="80" y="573" class="condition">Sensor failure</text>
+  <text x="380" y="555" class="body">Any operating state • temperature reading</text>
+  <text x="380" y="582" class="body">invalid or ToF error count reaches 3.</text>
+  <text x="1040" y="555" class="body">Enter FAULT; restore valid data</text>
+  <text x="1040" y="582" class="body">and clear ToF errors, then Start.</text>
+
+  <!-- Row 5 -->
+  <rect x="55" y="617" width="1490" height="90" rx="10" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="80" y="671" class="condition">Empty tank</text>
+  <text x="380" y="653" class="body">IDLE, HEATING, BREWING or COMPLETE •</text>
+  <text x="380" y="680" class="body">tank-empty input is asserted.</text>
+  <text x="1040" y="653" class="body">Enter FAULT; refill and clear</text>
+  <text x="1040" y="680" class="body">the tank-empty input, then Start.</text>
+
+  <!-- Row 6 -->
+  <rect x="55" y="715" width="1490" height="90" rx="10" fill="#f0f5fb" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="80" y="769" class="condition">Heating timeout</text>
+  <text x="380" y="751" class="body">HEATING has lasted 180 seconds</text>
+  <text x="380" y="778" class="body">without reaching the selected target.</text>
+  <text x="1040" y="751" class="body">Enter FAULT; press Start to</text>
+  <text x="1040" y="778" class="body">clear the timeout and return to IDLE.</text>
+
+  <text x="800" y="855" text-anchor="middle" class="foot">All faults turn the simulated heater and pump requests off. Faults stay latched until cleared, Start is pressed, or Power returns to STANDBY.</text>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#14212c"/><stop offset="1" stop-color="#0b131b"/></linearGradient><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#58d6c6"/></marker></defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<text x="58" y="70" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">COFFEE MAKER · PYTHON DIGITAL TWIN</text>
+<text x="58" y="126" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="700" fill="#f3f7f8">10. The GUI at a glance</text>
+<text x="60" y="164" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#aec0c8">A labeled dashboard preview: live controller values drive the machine view and indicators.</text>
+<rect x="58" y="202" width="1080" height="590" rx="20" fill="#101923" stroke="#44535f" stroke-width="3"/>
+<rect x="72" y="216" width="1052" height="52" rx="12" fill="#101923"/>
+<text x="95" y="250" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="23" font-weight="700" fill="#edf4f7">COFFEE MAKER</text>
+<rect x="851" y="229" width="246" height="30" rx="14" fill="#17372f"/>
+<text x="974" y="250" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#64dfa1">SAMPLE · LIVE STATUS VIEW</text>
+<rect x="72" y="279" width="1052" height="48" rx="10" fill="#192633"/>
+<text x="92" y="309" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" fill="#9aadb9">COM PORT   COMx</text>
+<rect x="292" y="288" width="98" height="30" rx="6" fill="#54d6c5"/>
+<text x="341" y="309" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#0b2024">CONNECT</text>
+<rect x="408" y="288" width="132" height="30" rx="6" fill="#223342" stroke="#54d6c5" stroke-width="1"/>
+<text x="474" y="308" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#54d6c5">READ QSPI LOG</text>
+<text x="1090" y="309" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#9aadb9">115200 8N1</text>
+<rect x="72" y="340" width="560" height="432" rx="14" fill="#192633"/>
+<text x="96" y="373" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#9aadb9">LIVE MACHINE MODEL</text>
+<rect x="230" y="400" width="252" height="260" rx="18" fill="#dbe4e5" stroke="#f4f7f5" stroke-width="2"/>
+<rect x="248" y="416" width="216" height="61" rx="10" fill="#273945"/>
+<circle cx="330" cy="440" r="9" fill="#455761"/><circle cx="362" cy="440" r="9" fill="#f0c15a"/><circle cx="394" cy="440" r="9" fill="#455761"/><circle cx="426" cy="440" r="9" fill="#54d6c5"/>
+<text x="356" y="465" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#edf4f7">BREWING</text>
+<rect x="324" y="491" width="64" height="75" fill="#2d424b"/><rect x="307" y="565" width="98" height="12" fill="#172a33"/>
+<path d="M280 600 L432 600 L420 640 Q356 660 292 640 Z" fill="#f7f8f3" stroke="#c8d2d2" stroke-width="2"/><path d="M300 625 L412 625 L410 640 Q356 654 302 640 Z" fill="#774b32"/>
+<path d="M356 578 L356 600" stroke="#a86938" stroke-width="5" stroke-dasharray="5 4"/>
+<text x="355" y="694" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#edf4f7">VIRTUAL MUG · 54% FILLED</text>
+<text x="96" y="743" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#f0c15a">Heater / pump are virtual · mug fill is illustrative</text>
+<rect x="652" y="340" width="472" height="198" rx="14" fill="#192633"/>
+<text x="674" y="373" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#9aadb9">LIVE READINGS</text>
+<rect x="674" y="391" width="202" height="58" rx="10" fill="#223342"/><rect x="892" y="391" width="210" height="58" rx="10" fill="#223342"/>
+<text x="691" y="413" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#9aadb9">STATE</text>
+<text x="691" y="438" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#54d6c5">BREWING</text>
+<text x="909" y="413" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#9aadb9">WATER TEMP</text>
+<text x="909" y="438" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#edf4f7">92.4 °C</text>
+<rect x="674" y="463" width="202" height="58" rx="10" fill="#223342"/><rect x="892" y="463" width="210" height="58" rx="10" fill="#223342"/>
+<text x="691" y="485" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#9aadb9">CUP / DISTANCE</text>
+<text x="691" y="510" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#62d58b">PRESENT · 63 mm</text>
+<text x="909" y="485" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#9aadb9">STRENGTH / FAULT</text>
+<text x="909" y="510" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#edf4f7">NORMAL · NONE</text>
+<rect x="652" y="552" width="472" height="123" rx="14" fill="#192633"/>
+<text x="674" y="582" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#9aadb9">BOARD INDICATORS</text>
+<circle cx="686" cy="614" r="8" fill="#455761"/><circle cx="802" cy="614" r="8" fill="#f0c15a"/><circle cx="920" cy="614" r="8" fill="#455761"/><circle cx="1040" cy="614" r="8" fill="#54d6c5"/>
+<text x="701" y="620" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#edf4f7">READY</text>
+<text x="817" y="620" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#edf4f7">HEATING</text>
+<text x="935" y="620" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#edf4f7">FAULT</text>
+<text x="1055" y="620" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" fill="#edf4f7">HEARTBEAT</text>
+<rect x="652" y="689" width="472" height="83" rx="14" fill="#192633"/>
+<text x="674" y="718" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#9aadb9">SIMULATED ACTUATORS</text>
+<text x="674" y="749" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#f0c15a">HEATER  0%</text>
+<text x="900" y="749" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#54d6c5">PUMP  RUNNING · 10.8 / 20 s</text>
+<text x="674" y="765" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#62d58b">QSPI EVENT LOG · ONLINE</text>
+<rect x="1158" y="202" width="384" height="590" rx="20" fill="#172733" stroke="#2b414f" stroke-width="2"/>
+<text x="1190" y="248" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#8fa8b3">SCREENSHOT GUIDE</text>
+<circle cx="1207" cy="296" r="17" fill="#20534e"/>
+<text x="1207" y="302" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#bff8ef">1</text>
+<text x="1240" y="302" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" fill="#edf4f7">Connection</text>
+<text x="1240" y="331" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">Choose ST-LINK COM port; live /</text>
+<text x="1240" y="354" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">stale / offline is shown at the</text>
+<text x="1240" y="377" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">top.</text>
+<circle cx="1207" cy="412" r="17" fill="#20534e"/>
+<text x="1207" y="418" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#bff8ef">2</text>
+<text x="1240" y="418" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" fill="#edf4f7">Sensors and state</text>
+<text x="1240" y="447" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">Temperature, ToF cup distance,</text>
+<text x="1240" y="470" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">strength, fault, and FSM state</text>
+<text x="1240" y="493" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">mirror telemetry.</text>
+<circle cx="1207" cy="528" r="17" fill="#20534e"/>
+<text x="1207" y="534" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#bff8ef">3</text>
+<text x="1240" y="534" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" fill="#edf4f7">Board LEDs</text>
+<text x="1240" y="563" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">Four lamps mirror PB4, PB1, PA4,</text>
+<text x="1240" y="586" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">and PB14 output levels.</text>
+<circle cx="1207" cy="644" r="17" fill="#20534e"/>
+<text x="1207" y="650" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#bff8ef">4</text>
+<text x="1240" y="650" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" fill="#edf4f7">Pump + QSPI history</text>
+<text x="1240" y="679" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">Pump timer drives virtual mug fill.</text>
+<text x="1240" y="702" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">Read QSPI log to view history and</text>
+<text x="1240" y="725" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#c2d0d7">save CSV.</text>
+<text x="1190" y="759" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="650" fill="#f0c15a">Read-only control · QSPI read request only</text>
+<text x="58" y="832" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="500" fill="#e3e9eb">Illustrative dashboard screenshot layout · connect USART1 at 115200 8N1 to show live controller telemetry</text>
+<text x="1542" y="832" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#9db1bb">10 / 14</text>
+<text x="58" y="886" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" fill="#80959f">The live machine graphic, actuator values, timer, and LEDs update from STATUS packets; no actuator is physically controlled.</text>
+</svg>

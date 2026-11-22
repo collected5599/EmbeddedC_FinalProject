@@ -6,6 +6,14 @@ This document provides the physical point-to-point connection diagram and compon
 
 ![Physical Breadboard Wiring Diagram](PHYSICAL_WIRING.svg)
 
+**Illustrative and not to scale.** Route all board connections by the PCB silkscreen labels (`3V3`, `GND`, `A0`, `D2`, `D4`, `D5`, `D6`, `D7`). Do not determine pin 1 by counting positions in this drawing. The visual CN3 right-to-left orientation is shown for reference only.
+
+The project switch is the three-lug, two-position toggle shown below. Its center lug is drawn as COM, but confirm COM and the two throws with a continuity meter before connecting it.
+
+For the shown electrical assignment, the grounded throw selects **Strong** and the open throw selects **Normal** through PA3's internal pull-up. PD14 also uses its internal pull-up. The lever's physical direction depends on how the switch is mounted.
+
+![Three-terminal strength selector switch](../Project_Progress/Screenshots/05_Strength_Selector_Switch.jpg)
+
 ---
 
 ## 1. Physical Layout Diagram
@@ -15,20 +23,22 @@ This document provides the physical point-to-point connection diagram and compon
       |                                                                                 |
       |   [ST-LINK USB]                                                                 |
       |                                                                                 |
-      |   (CN3 - Digital D0-D7)              (CN1 - Digital D8-D15)                     |
-      |    Pin 1: D0 (PA1)                    Pin 1: D8 (PB2)                           |
-      |    Pin 2: D1 (PA0)                    Pin 2: D9 (PA15)                          |
-      |    Pin 3: D2 (PD14) --------.         Pin 3: D10 (PA2)                          |
-      |    Pin 4: D3 (PB0)          |         Pin 4: D11 (PA7)                          |
-      |    Pin 5: D4 (PA3) -----.   |         Pin 5: D12 (PA6)                          |
-      |    Pin 6: D5 (PB4) --.  |   |         Pin 6: D13 (PA5)                          |
-      |    Pin 7: D6 (PB1) -.|  |   |         Pin 7: GND                                |
-      |    Pin 8: D7 (PA4) |||  |   |         Pin 8: AREF                               |
-      |                    |||  |   |         Pin 9: SDA (PB9)                          |
-      |   [User Button B2] |||  |   |         Pin 10: SCL (PB8)                         |
-      |   (PC13 Blue)      |||  |   |                                                   |
-      |   [BUTTON_EXTI13]  |||  |   |         [Onboard VL53L0X ToF Sensor]              |
-      |                    |||  |   |         (I2C2: PB10/PB11, XSHUT: PC6)             |
+      |   (CN1 - Digital D8-D15)             (CN3 - Digital D0-D7)                      |
+      |    Pin 1: D8 (PB2)                    Pin 8: D7 (PA4)                            |
+      |    Pin 2: D9 (PA15)                   Pin 7: D6 (PB1)                            |
+      |    Pin 3: D10 (PA2)                   Pin 6: D5 (PB4)                            |
+      |    Pin 4: D11 (PA7)                   Pin 5: D4 (PA3) -----.                     |
+      |    Pin 5: D12 (PA6)                   Pin 4: D3 (PB0)       |                     |
+      |    Pin 6: D13 (PA5)                   Pin 3: D2 (PD14) --.   |                     |
+      |    Pin 7: GND                         Pin 2: D1 (PA0)    |   |                     |
+      |    Pin 8: AREF                        Pin 1: D0 (PA1) <-- rightmost pin             |
+      |    Pin 9: SDA (PB9)                                      |   |                     |
+      |    Pin 10: SCL (PB8)                                     |   |                     |
+      |   [User Button B2]                                       |   |                     |
+      |   (PC13 Blue)                                            |   |                     |
+      |   [BUTTON_EXTI13]                                        |   |                     |
+      |         [Onboard VL53L0X ToF Sensor]                     |   |                     |
+      |         (I2C2: PB10/PB11, XSHUT: PC6)                    |   |                     |
       |    Pin 1: NC       |||  |   |                                                   |
       |    Pin 2: IOREF    |||  |   |        (CN4 - Analog A0-A5)                       |
       |    Pin 3: NRST     |||  |   |         Pin 1: A0 (PC5) ----.                     |
@@ -56,9 +66,10 @@ This document provides the physical point-to-point connection diagram and compon
       |    Terminal 1         --------> Connected to CN3 Pin 3 (PD14 / D2)              |
       |    Terminal 2         --------> Connected to (-) BLUE RAIL (GND)                |
       |                                                                                 |
-      |  [LEVER SWITCH] (SPST Toggle - Normal / Strong Selection)                       |
-      |    Terminal 1         --------> Connected to CN3 Pin 5 (PA3 / D4)               |
-      |    Terminal 2         --------> Connected to (-) BLUE RAIL (GND)                |
+      |  [STRENGTH SELECTOR] (3-terminal SPDT Toggle - Normal / Strong)                 |
+      |    Common (COM)       --------> Connected to CN3 Pin 5 (PA3 / D4)              |
+      |    Selected throw    --------> Connected to (-) BLUE RAIL (GND)                |
+      |    Other throw       --------> Leave unconnected                              |
       |                                                                                 |
       |  [GREEN READY LED]                                                              |
       |    Anode (+)          --------> 150 Ω Resistor --------> CN3 Pin 6 (PB4 / D5)   |
@@ -87,10 +98,12 @@ This document provides the physical point-to-point connection diagram and compon
 | **W3** | Breadboard **Red Rail (+)** | Potentiometer Outer Pin 1 | **Red** | Potentiometer High Reference (3.3V) |
 | **W4** | **CN4 pin 1** (`PC5` / A0) | Potentiometer Center Pin 2 | **Blue** | Potentiometer Analog Voltage Wiper |
 | **W5** | Breadboard **Blue Rail (-)** | Potentiometer Outer Pin 3 | **Black** | Potentiometer Low Reference (0V) |
+| **W19** | PC5 potentiometer wiper row | C1, 100 nF capacitor leg 1 | *Component Lead* | Filter capacitor from the ADC wiper |
+| **W20** | C1, 100 nF capacitor leg 2 | Breadboard **Blue Rail (-)** | *Component Lead* | Filter capacitor ground return |
 | **W6** | **CN3 pin 3** (`PD14` / D2) | Start/Cancel Button Leg 1 | **Yellow** | Active-Low Pushbutton Signal |
 | **W7** | Breadboard **Blue Rail (-)** | Start/Cancel Button Leg 2 | **Black** | Pushbutton Ground Return |
-| **W8** | **CN3 pin 5** (`PA3` / D4) | Lever Switch Terminal 1 | **Orange** | Active-Low Strength Switch Signal |
-| **W9** | Breadboard **Blue Rail (-)** | Lever Switch Terminal 2 | **Black** | Lever Switch Ground Return |
+| **W8** | **CN3 pin 5** (`PA3` / D4) | Strength selector **COM** terminal | **Orange** | Active-Low Strength Switch Signal |
+| **W9** | Breadboard **Blue Rail (-)** | One selected outer switch throw | **Black** | Grounds PA3 in one position; leave the other throw unconnected |
 | **W10**| **CN3 pin 6** (`PB4` / D5) | Ready LED Series Resistor (150 Ω) | **Green** | Ready LED Drive Output |
 | **W11**| Resistor (150 Ω) Output | Ready LED Anode (+) | *Component Lead* | Current-limited Green LED Anode |
 | **W12**| Ready LED Cathode (-) | Breadboard **Blue Rail (-)** | **Black** | Ready LED Ground Return |
@@ -115,6 +128,8 @@ This document provides the physical point-to-point connection diagram and compon
 2. Connect row 5 (Pin 1) to the **Red (+) Rail** via wire **W3**.
 3. Connect row 7 (Pin 3) to the **Blue (-) Rail** via wire **W5**.
 4. Connect row 6 (Pin 2 / Wiper) to **CN4 pin 1** (`PC5`) via wire **W4**.
+5. Place C1 (100 nF ceramic) with one leg in the wiper row (wire **W19**) and the other leg in the **Blue (-) Rail** (wire **W20**). This puts C1 between PC5 and GND.
+*(The PC13 power button and its pull-up/capacitor network are onboard; do not add a breadboard connection for PC13.)*
 
 ### Step 3: Start / Cancel Pushbutton
 1. Place a momentary 2-pin or 4-pin tactile pushbutton straddling the center divider (e.g., row 12).
@@ -122,17 +137,19 @@ This document provides the physical point-to-point connection diagram and compon
 3. Connect the diagonal or paired terminal to the **Blue (-) Rail** via wire **W7**.
 *(Note: Internal pull-up resistor on PD14 keeps the line HIGH; pressing the button pulls it to GND).*
 
-### Step 4: Normal / Strong Lever Switch
-1. Place the toggle/lever switch into two independent rows (e.g., rows 16 and 18).
-2. Connect Terminal 1 to **CN3 pin 5** (`PA3`) via wire **W8**.
-3. Connect Terminal 2 to the **Blue (-) Rail** via wire **W9**.
-*(Note: Internal pull-up on PA3 keeps the line HIGH when the switch is open [Normal Mode]; closing the switch ties PA3 to GND [Strong Mode]).*
+### Step 4: Normal / Strong Three-Terminal Switch
+1. With the board unplugged, use a multimeter in continuity mode to identify the **common (COM)** terminal. In each toggle position, COM should connect to a different outer terminal.
+2. Place the switch so all three lugs occupy separate breadboard rows.
+3. Connect **COM** to **CN3 pin 5** (`PA3`) via wire **W8**.
+4. Connect one outer throw to the **Blue (-) Rail** via wire **W9**. Leave the other outer throw unconnected and isolated.
+5. The position that closes COM to the grounded throw is **Strong** (PA3 low). The other position is **Normal** (PA3 high through the MCU pull-up). If the lever direction is reversed, move the ground wire to the other outer throw.
 
 ### Step 5: External Status LEDs
 1. **Green Ready LED**:
    * Insert a 150 Ω resistor (Brown-Green-Brown-Gold) between row 22 and row 23.
    * Connect row 22 to **CN3 pin 6** (`PB4`) via wire **W10**.
    * Insert the Green LED Anode (longer lead) into row 23, and Cathode (shorter lead) into the **Blue (-) Rail**.
+   * The 150 Ω value assumes a high-forward-voltage green LED. Check the LED datasheet and choose the resistor from `R = (3.3 V − Vf) / I_LED`; keep current within both the LED and STM32 GPIO ratings.
 2. **Yellow Heating/Brewing LED**:
    * Insert a 330 Ω resistor (Orange-Orange-Brown-Gold) between row 26 and row 27.
    * Connect row 26 to **CN3 pin 7** (`PB1`) via wire **W13**.

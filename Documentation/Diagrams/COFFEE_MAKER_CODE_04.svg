@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#14212c"/><stop offset="1" stop-color="#0b131b"/></linearGradient><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#58d6c6"/></marker><marker id="redarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#ff6a70"/></marker></defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<text x="58" y="70" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">COFFEE MAKER · FIRMWARE IMPLEMENTATION</text>
+<text x="58" y="126" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="700" fill="#f3f7f8">14. Expand outward: drivers and interfaces</text>
+<text x="60" y="164" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#aec0c8">The application connects real sensor/control inputs to safe GPIO outputs, persistent event records, and the PC digital twin.</text>
+<rect x="58" y="218" width="1484" height="548" rx="26" fill="#172733" stroke="#2b414f" stroke-width="2"/>
+<rect x="90" y="290" width="410" height="352" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="114" y="329" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">INPUT BLOCKS</text>
+<text x="114" y="368" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">GPIO · PC13 power, PD14 start,</text>
+<text x="114" y="393" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">PA3 strength</text>
+<text x="114" y="432" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">ADC1 · PC5 simulated temperature</text>
+<text x="114" y="496" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">I2C2 · VL53L0X distance / cup</text>
+<text x="114" y="521" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">validity</text>
+<text x="114" y="560" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Source: coffee_app.c + vendor</text>
+<text x="114" y="585" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">sensor API</text>
+<rect x="596" y="345" width="410" height="242" rx="20" fill="#273742" stroke="#35505e" stroke-width="2"/>
+<text x="620" y="384" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#f0c15a">APPLICATION CORE</text>
+<text x="620" y="423" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">coffee_app.c builds inputs</text>
+<text x="620" y="487" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">coffee_sm.c decides outputs</text>
+<text x="620" y="551" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">io_diagnostics.c can verify I/O</text>
+<rect x="1100" y="290" width="410" height="352" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="1124" y="329" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">OUTPUT / DATA BLOCKS</text>
+<text x="1124" y="368" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">GPIO · PB4 ready, PB1 heat, PA4</text>
+<text x="1124" y="393" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">fault, PB14 heartbeat</text>
+<text x="1124" y="432" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">QSPI · sectors 1–2 ToF profile;</text>
+<text x="1124" y="457" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">3–15 event log</text>
+<text x="1124" y="496" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">USART1 · STATUS + READ_LOGS ↔</text>
+<text x="1124" y="521" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Python GUI</text>
+<text x="1124" y="560" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Source: calibration store +</text>
+<text x="1124" y="585" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">storage manager</text>
+<path d="M505 466 L585 466" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<path d="M1010 466 L1089 466" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<rect x="90" y="672" width="1420" height="58" rx="14" fill="#14222c"/>
+<text x="116" y="708" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#62d7c6">SEPARATION OF CONCERNS</text>
+<text x="408" y="708" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="500" fill="#e3ecef">main.c schedules · app coordinates · FSM decides · drivers touch hardware · GUI visualizes telemetry</text>
+<text x="90" y="750" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#f0c15a">USART1 accepts the QSPI read request only; no state/actuator commands. Heater and pump are simulated.</text>
+<text x="1542" y="832" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#9db1bb">14 / 14</text>
+<rect x="58" y="856" width="1484.0" height="4" rx="2" fill="#58d6c6"/>
+<text x="58" y="886" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" fill="#80959f">Coffee application is integrated in source · coffee-mode hardware behavior still needs validation</text>
+</svg>

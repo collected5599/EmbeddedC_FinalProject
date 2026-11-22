@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#14212c"/><stop offset="1" stop-color="#0b131b"/></linearGradient><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#58d6c6"/></marker><marker id="redarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#ff6a70"/></marker></defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<text x="58" y="70" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">COFFEE MAKER · FIRMWARE IMPLEMENTATION</text>
+<text x="58" y="126" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="700" fill="#f3f7f8">11. Start at main.c: the firmware call path</text>
+<text x="60" y="164" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#aec0c8">The main loop owns initialization, task selection, repeat scheduling, and watchdog refresh.</text>
+<rect x="58" y="218" width="1484" height="548" rx="26" fill="#172733" stroke="#2b414f" stroke-width="2"/>
+<rect x="82" y="302" width="320" height="250" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="106" y="341" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">1 · STARTUP</text>
+<text x="106" y="380" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">main.c</text>
+<text x="106" y="444" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">HAL and CubeMX</text>
+<text x="106" y="469" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">peripheral setup</text>
+<text x="106" y="508" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">IWDG starts</text>
+<path d="M405 426 L443 426" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<rect x="455" y="302" width="320" height="250" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="479" y="341" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">2 · MODE SELECT</text>
+<text x="479" y="380" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">app_config.h</text>
+<text x="479" y="444" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">0 → CoffeeApp</text>
+<text x="479" y="508" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">1 → IoDiagnostics</text>
+<path d="M778 426 L816 426" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<rect x="828" y="302" width="320" height="250" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="852" y="341" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">3 · TASK LOOP</text>
+<text x="852" y="380" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">main.c</text>
+<text x="852" y="444" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Init once, then call</text>
+<text x="852" y="469" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">selected task</text>
+<text x="852" y="508" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Each pass refreshes IWDG</text>
+<path d="M1151 426 L1189 426" stroke="#58d6c6" stroke-width="5" marker-end="url(#arr)"/>
+<rect x="1201" y="302" width="320" height="250" rx="20" fill="#203744" stroke="#35505e" stroke-width="2"/>
+<text x="1225" y="341" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">4 · REPEAT</text>
+<text x="1225" y="380" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">while (1)</text>
+<text x="1225" y="444" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Run task again</text>
+<text x="1225" y="508" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e3ecef">Keep watchdog serviced</text>
+<path d="M1360 570 C1360 662 972 662 972 570" fill="none" stroke="#58d6c6" stroke-width="4" marker-end="url(#arr)"/>
+<rect x="190" y="632" width="1220" height="82" rx="16" fill="#14222c"/>
+<text x="220" y="667" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#62d7c6">CURRENT SETTING</text>
+<text x="220" y="698" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="19" font-weight="500" fill="#e5edf0">IO_DIAGNOSTICS_MODE = 0 → coffee application starts; set to 1 to return to the confirmed GPIO diagnostic mode.</text>
+<text x="82" y="744" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#a8bac3">Application hooks live in CubeMX USER CODE sections so code generation preserves the selection and loop.</text>
+<text x="1542" y="832" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#9db1bb">11 / 14</text>
+<rect x="58" y="856" width="1166.0" height="4" rx="2" fill="#58d6c6"/>
+<text x="58" y="886" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" fill="#80959f">Coffee application is integrated in source · coffee-mode hardware behavior still needs validation</text>
+</svg>

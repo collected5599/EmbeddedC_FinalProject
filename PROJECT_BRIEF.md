@@ -15,7 +15,7 @@ The STM32 executes all control logic. Python simulates the coffee machine's wate
 ## Inputs
 - Onboard user button B2 (`BUTTON_EXTI13`, PC13): power toggle (active-low)
 - External pushbutton: start/cancel (PD14, active-low)
-- Lever switch: normal/strong coffee (PA3, active-low)
+- Three-terminal, two-position strength selector: normal/strong coffee (PA3, active-low; SPDT common to PA3, one throw to GND, other throw open)
 - Potentiometer: simulated water temperature (PC5, ADC1_IN14, mapped 20 °C – 110 °C)
 - VL53L0X: cup detection (onboard I2C2, PB10/PB11, XSHUT on PC6)
 - Additional onboard sensors: evaluate for useful functionality

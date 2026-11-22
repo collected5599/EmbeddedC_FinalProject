@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .title { font-size: 38px; font-weight: 700; }
+      .subtitle { font-size: 22px; fill: #536078; }
+      .name { font-size: 25px; font-weight: 700; }
+      .detail { font-size: 19px; fill: #46536a; }
+      .label { font-size: 18px; font-weight: 600; fill: #39465b; }
+      .state { stroke-width: 3; rx: 20; }
+      .normal { fill: #eaf3ff; stroke: #3973b9; }
+      .active { fill: #edf8ef; stroke: #3d8b56; }
+      .complete { fill: #fff4e5; stroke: #c98222; }
+      .fault { fill: #fff0f0; stroke: #c94343; }
+      .line { fill: none; stroke: #43536b; stroke-width: 4; marker-end: url(#arrow); }
+      .faultline { fill: none; stroke: #c94343; stroke-width: 4; marker-end: url(#redarrow); }
+      .return { fill: none; stroke: #43536b; stroke-width: 3; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#43536b"/></marker>
+    <marker id="redarrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#c94343"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="#f7f9fc"/>
+  <text x="800" y="62" text-anchor="middle" class="title">Coffee Maker — State Machine</text>
+  <text x="800" y="101" text-anchor="middle" class="subtitle">Coffee logic designed • firmware integration in progress</text>
+
+  <!-- Main states -->
+  <rect x="50" y="300" width="230" height="145" class="state normal"/>
+  <text x="165" y="355" text-anchor="middle" class="name">STANDBY</text>
+  <text x="165" y="395" text-anchor="middle" class="detail">System inactive</text>
+
+  <rect x="365" y="300" width="230" height="145" class="state normal"/>
+  <text x="480" y="355" text-anchor="middle" class="name">IDLE</text>
+  <text x="480" y="395" text-anchor="middle" class="detail">No cup: start ignored</text>
+
+  <rect x="680" y="300" width="230" height="145" class="state active"/>
+  <text x="795" y="355" text-anchor="middle" class="name">HEATING</text>
+  <text x="795" y="395" text-anchor="middle" class="detail">Below target</text>
+
+  <rect x="995" y="285" width="230" height="175" class="state active"/>
+  <text x="1110" y="330" text-anchor="middle" class="name">BREWING</text>
+  <text x="1110" y="365" text-anchor="middle" class="detail">Preinfusion</text>
+  <text x="1110" y="395" text-anchor="middle" class="detail">Bloom pause</text>
+  <text x="1110" y="425" text-anchor="middle" class="detail">Extraction</text>
+
+  <rect x="1310" y="300" width="230" height="145" class="state complete"/>
+  <text x="1425" y="355" text-anchor="middle" class="name">COMPLETE</text>
+  <text x="1425" y="395" text-anchor="middle" class="detail">Serve coffee</text>
+
+  <!-- Start and normal forward transitions -->
+  <path d="M280 372 H355" class="line"/>
+  <text x="317" y="345" text-anchor="middle" class="label">Power</text>
+  <path d="M595 372 H670" class="line"/>
+  <text x="632" y="345" text-anchor="middle" class="label">Start</text>
+  <path d="M910 372 H985" class="line"/>
+  <text x="947" y="345" text-anchor="middle" class="label">At target</text>
+  <path d="M1225 372 H1300" class="line"/>
+  <text x="1262" y="345" text-anchor="middle" class="label">Done</text>
+
+  <!-- Power-off and direct-to-brew alternate path -->
+  <path d="M480 300 V165 H165 V290" class="return"/>
+  <rect x="245" y="140" width="150" height="42" rx="10" fill="#f7f9fc"/>
+  <text x="320" y="169" text-anchor="middle" class="label">Power off</text>
+  <path d="M480 300 V225 H1110 V275" class="return"/>
+  <rect x="655" y="200" width="400" height="44" rx="10" fill="#f7f9fc"/>
+  <text x="855" y="230" text-anchor="middle" class="label">Start + cup when target is already reached</text>
+
+  <!-- Return paths -->
+  <path d="M1425 445 V505 H480 V455" class="return"/>
+  <rect x="675" y="480" width="330" height="44" rx="10" fill="#f7f9fc"/>
+  <text x="840" y="510" text-anchor="middle" class="label">Cup removed or 5 s timeout</text>
+  <path d="M795 445 V565 H480 V455" class="return"/>
+  <path d="M1110 460 V565 H480 V455" class="return"/>
+  <rect x="675" y="540" width="330" height="44" rx="10" fill="#f7f9fc"/>
+  <text x="840" y="570" text-anchor="middle" class="label">Start / cancel during heating or brew</text>
+
+  <!-- Fault handling -->
+  <rect x="300" y="610" width="1000" height="58" rx="14" fill="#fff0f0" stroke="#c94343" stroke-width="2.5"/>
+  <text x="800" y="647" text-anchor="middle" class="label" fill="#a32e2e">IDLE • HEATING • BREWING • COMPLETE → FAULT</text>
+  <path d="M800 668 V680" class="faultline"/>
+  <rect x="250" y="690" width="1100" height="150" class="state fault"/>
+  <text x="800" y="735" text-anchor="middle" class="name" fill="#a32e2e">FAULT</text>
+  <text x="800" y="772" text-anchor="middle" class="detail">See Fault Matrix for trigger thresholds, timings, and clear conditions</text>
+  <text x="800" y="810" text-anchor="middle" class="detail">Condition cleared + Start → IDLE     |     Power button → STANDBY</text>
+</svg>

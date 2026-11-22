@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<defs><linearGradient id="bg" x2="0" y2="1"><stop stop-color="#14212c"/><stop offset="1" stop-color="#0b131b"/></linearGradient><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#58d6c6"/></marker><marker id="redarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#ff6a70"/></marker></defs>
+<rect width="1600" height="900" fill="url(#bg)"/>
+<text x="58" y="70" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#62d7c6">COFFEE MAKER · FIRMWARE IMPLEMENTATION</text>
+<text x="58" y="126" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="43" font-weight="700" fill="#f3f7f8">13. The FSM is the decision core</text>
+<text x="60" y="164" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="22" font-weight="400" fill="#aec0c8">It owns state transitions and safety decisions; hardware code stays outside the state-machine module.</text>
+<rect x="58" y="218" width="1484" height="548" rx="26" fill="#172733" stroke="#2b414f" stroke-width="2"/>
+<text x="90" y="263" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#8fa8b3">HAL-FREE DECISION ENGINE · coffee_sm.c / coffee_sm.h</text>
+<rect x="85" y="305" width="230" height="112" rx="18" fill="#203744" stroke="#3d6870" stroke-width="2"/>
+<text x="200" y="348" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#edf4f7">STANDBY</text>
+<text x="200" y="384" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#b9cbd2">Wait for power</text>
+<path d="M318 361 L371 361" stroke="#58d6c6" stroke-width="4" marker-end="url(#arr)"/>
+<rect x="380" y="305" width="230" height="112" rx="18" fill="#203744" stroke="#3d6870" stroke-width="2"/>
+<text x="495" y="348" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#edf4f7">IDLE</text>
+<text x="495" y="384" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#b9cbd2">Cup + start</text>
+<path d="M613 361 L666 361" stroke="#58d6c6" stroke-width="4" marker-end="url(#arr)"/>
+<rect x="675" y="305" width="230" height="112" rx="18" fill="#203744" stroke="#3d6870" stroke-width="2"/>
+<text x="790" y="348" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#edf4f7">HEATING</text>
+<text x="790" y="384" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#b9cbd2">Below target</text>
+<path d="M908 361 L961 361" stroke="#58d6c6" stroke-width="4" marker-end="url(#arr)"/>
+<rect x="970" y="305" width="230" height="112" rx="18" fill="#203744" stroke="#3d6870" stroke-width="2"/>
+<text x="1085" y="348" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#edf4f7">BREWING</text>
+<text x="1085" y="384" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#b9cbd2">Timed phases</text>
+<path d="M1203 361 L1256 361" stroke="#58d6c6" stroke-width="4" marker-end="url(#arr)"/>
+<rect x="1265" y="305" width="230" height="112" rx="18" fill="#203744" stroke="#3d6870" stroke-width="2"/>
+<text x="1380" y="348" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#edf4f7">COMPLETE</text>
+<text x="1380" y="384" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="500" fill="#b9cbd2">Stop / return</text>
+<path d="M493 417 C493 520 202 520 202 417" fill="none" stroke="#58d6c6" stroke-width="3" marker-end="url(#arr)"/>
+<path d="M495 417 C495 444 1085 444 1085 417" fill="none" stroke="#f0c15a" stroke-width="3" marker-end="url(#arr)"/>
+<text x="790" y="461" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#f1c66f">Already at target</text>
+<path d="M1380 304 L1380 282 L495 282 L495 300" fill="none" stroke="#58d6c6" stroke-width="3" marker-end="url(#arr)"/>
+<path d="M495 417 L495 552 M790 417 L790 552 M1085 417 L1085 552 M1380 417 L1380 552 M495 552 L1380 552 M790 552 L790 578" fill="none" stroke="#ff6a70" stroke-width="3" stroke-dasharray="8 7" marker-end="url(#redarr)"/>
+<text x="90" y="548" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#ff888d">FAULT CHECKS</text>
+<rect x="570" y="470" width="460" height="72" rx="16" fill="#392d20" stroke="#8a6737" stroke-width="2"/>
+<text x="800" y="500" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#f1c66f">BREW PHASES · pump active-time timer</text>
+<text x="800" y="526" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="500" fill="#f0e9dc">Pre-infusion 2 / 5 s → bloom pause 2 s OFF → extract to 20 / 32 s ON</text>
+<rect x="650" y="588" width="300" height="88" rx="18" fill="#3a2428" stroke="#87474d" stroke-width="2"/>
+<text x="800" y="623" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="20" font-weight="700" fill="#ff9c9e">FAULT</text>
+<text x="800" y="652" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="15" font-weight="500" fill="#f0d9da">safe outputs · red 4 Hz · recovery check</text>
+<text x="90" y="594" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#ff888d">SAFETY RULES</text>
+<text x="90" y="630" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="500" fill="#e5edf0">No cup at start → ignore. Cup lost ≥200 ms during heating/brewing → fault.</text>
+<text x="90" y="661" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="500" fill="#e5edf0">Over 102 °C · 180 s heat timeout · sensor communication failure → fault.</text>
+<text x="90" y="719" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="500" fill="#b7c8cf">The FSM returns commands and patterns; `coffee_app.c` applies them to pins, flash logging, and telemetry.</text>
+<text x="1542" y="832" text-anchor="end" font-family="Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#9db1bb">13 / 14</text>
+<rect x="58" y="856" width="1378.0" height="4" rx="2" fill="#58d6c6"/>
+<text x="58" y="886" text-anchor="start" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" fill="#80959f">Coffee application is integrated in source · coffee-mode hardware behavior still needs validation</text>
+</svg>

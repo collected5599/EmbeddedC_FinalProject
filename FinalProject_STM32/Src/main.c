@@ -22,7 +22,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "app_config.h"
+#include "coffee_app.h"
 #include "io_diagnostics.h"
+#include "tof_calibration.h"
 
 /* USER CODE END Includes */
 
@@ -108,8 +110,12 @@ int main(void)
   MX_QUADSPI_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-#if IO_DIAGNOSTICS_MODE
+#if IO_TOF_CALIBRATION_MODE
+  TofCalibration_Init();
+#elif IO_DIAGNOSTICS_MODE
   IoDiagnostics_Init();
+#else
+  CoffeeApp_Init();
 #endif
 
   /* USER CODE END 2 */
@@ -121,10 +127,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-#if IO_DIAGNOSTICS_MODE
+#if IO_TOF_CALIBRATION_MODE
+    TofCalibration_Task();
+#elif IO_DIAGNOSTICS_MODE
     IoDiagnostics_Task();
 #else
-    /* Call the integrated coffee-maker application task here when ready. */
+    CoffeeApp_Task();
 #endif
 
     /* Keep IWDG active while the superloop is making progress. */
@@ -359,7 +367,7 @@ static void MX_QUADSPI_Init(void)
   /* USER CODE END QUADSPI_Init 1 */
   /* QUADSPI parameter configuration*/
   hqspi.Instance = QUADSPI;
-  hqspi.Init.ClockPrescaler = 1;
+  hqspi.Init.ClockPrescaler = 3;
   hqspi.Init.FifoThreshold = 4;
   hqspi.Init.SampleShifting = QSPI_SAMPLE_SHIFTING_NONE;
   hqspi.Init.FlashSize = 22;

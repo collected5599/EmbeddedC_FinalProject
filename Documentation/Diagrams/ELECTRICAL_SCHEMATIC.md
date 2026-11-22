@@ -32,13 +32,11 @@
                                          | | Inside STM32
                                          '-'
                                           |
-            CN3 pin 5 (PA3 / GPIO_IN) <---+
-                                          |
-                                          o
-                                           \  SW2 (Lever Switch: Normal/Strong)
-                                          o
-                                          |
-                                         === GND
+            CN3 pin 5 (PA3 / GPIO_IN) <--- COM
+                                          \
+                                           o---- Throw A ---- GND (CN2 pin 6)
+                                           o---- Throw B ---- leave open
+                                                SW2 (SPDT strength selector)
 
 
        ================================ OUTPUT CIRCUITS (LEDs) ================================
@@ -120,23 +118,28 @@
 
 ---
 
-### 2.3 Digital Input Circuit 2: Coffee Strength Lever Switch (PA3)
+### 2.3 Digital Input Circuit 2: Three-Terminal Coffee Strength Switch (PA3)
 * **Pin**: PA3 (Connector CN3 pin 5)
-* **Configuration**: Active-low SPST toggle switch using STM32 internal pull-up.
+* **Switch**: Three-terminal, two-position SPDT toggle switch.
+* **Configuration**: PA3 connects to COM. One outer throw connects to GND; leave the other outer throw unconnected. Use a continuity meter to identify COM and the throws before wiring.
 
 ```text
     VDD (+3.3V Internal)
              |
             [ ] R_PU (Internal ~40 kΩ)
              |
-    PA3 -----+----o   / o---- GND (CN2 pin 6)
-                      SW2 (Lever Switch)
+    PA3 ----- COM o
+                  \
+                   o---- Throw A ---- GND (CN2 pin 6)
+                   o---- Throw B ---- no connection
+                      SW2 (SPDT Strength Switch)
 ```
 
 * **Logic Mapping**:
-  * **Switch Open (Normal Mode)**: PA3 = $3.3\text{ V}$ (Logic High `1`).
-  * **Switch Closed (Strong Mode)**: PA3 = $0.0\text{ V}$ (Logic Low `0`).
-  * **Current consumption**: Zero when open; $82.5\ \mu\text{A}$ when closed.
+  * **COM touching grounded throw (Strong Mode)**: PA3 = $0.0\text{ V}$ (Logic Low `0`).
+  * **COM touching unused throw (Normal Mode)**: PA3 = $3.3\text{ V}$ (Logic High `1`) through the STM32 internal pull-up.
+  * If the physical lever direction is opposite the desired mode, move the GND wire to the other outer throw.
+  * **Current consumption**: Zero in the Normal position; approximately $82.5\ \mu\text{A}$ in the grounded Strong position.
 
 ---
 
@@ -187,7 +190,7 @@
 | `GND` | STM32 CN2 pin 6 / 7 | Breadboard Common GND rail | Common 0.0 V system reference |
 | `NET_ADC_TEMP` | Potentiometer Pin 2 (Wiper)| STM32 CN4 pin 1 (PC5) | Simulated temperature analog voltage |
 | `NET_BTN_START`| Breadboard Pushbutton Leg 1| STM32 CN3 pin 3 (PD14) | Start/Cancel momentary switch line |
-| `NET_SW_STRONG`| Breadboard Lever Switch Leg 1| STM32 CN3 pin 5 (PA3) | Strength mode toggle switch line |
+| `NET_SW_STRONG`| SPDT switch COM; selected outer throw to GND | STM32 CN3 pin 5 (PA3) | Strength mode selector; unused throw left open |
 | `NET_LED_READY`| STM32 CN3 pin 6 (PB4) | 150 Ω Resistor -> Green LED Anode | Ready state indicator drive |
 | `NET_LED_HEAT` | STM32 CN3 pin 7 (PB1) | 330 Ω Resistor -> Yellow LED Anode| Heating/Brewing state indicator drive |
 | `NET_LED_FAULT`| STM32 CN3 pin 8 (PA4) | 330 Ω Resistor -> Red LED Anode | Fault state indicator drive |
